@@ -1,0 +1,21 @@
+wdialog[template="ImportRedirection"]{
+	-moz-binding: url(binding:modules.seo.dialog#importRedirectionDialog);
+}
+
+gridlist.rulesGridJSON{
+	-moz-binding: url(binding:modules.seo.editors.sitemap#cRulesGrid);
+}
+gridfield.priorityselector {
+	-moz-binding: url(binding:modules.seo.editors.sitemap#cPrioritySelector);
+}
+gridfield.changefreqselector {
+	-moz-binding: url(binding:modules.seo.editors.sitemap#cChangeFreqSelector);
+}
+gridfield.rulestatus {
+	-moz-binding: url(binding:modules.seo.editors.sitemap#cRuleStatus);
+}
+sitemapoverride.document{
+	-moz-binding: url(binding:modules.seo.editors.sitemap#cDocumentSitemapOverride);
+}
+
+

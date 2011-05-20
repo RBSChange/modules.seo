@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+  <section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+    <field name="template" class="template" size="100"/>
+  </section>
+  
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				this.extendMethod("fireInitializeComplete", this.initializeCompleteTemplate);
+			]]></constructor>
+			
+			<method name="initializeCompleteTemplate">
+				<parameter name="result" />
+				<body><![CDATA[
+				var fields = this.fields;
+				try
+				{	if ('templatevars' in result.contents)
+					{
+						var templatevars = result.contents.templatevars;		
+						this.setMenuItems(templatevars, fields.template);
+					}	
+				}
+				catch (e)
+				{
+					wCore.error("initializeCompleteTemplate", [result], e);
+				}
+				]]></body>
+			</method>
+			
+			<method name="setMenuItems">
+				<parameter name="metas" />
+				<parameter name="field" />
+				<body><![CDATA[
+				field.clearSubstitutions();
+				for (var i = 0; i < metas.length; i++)
+				{
+					field.addSubstitution(metas[i].label, metas[i].value);
+				} 
+				]]></body>
+			</method>
+		</javascript>
+	</xul>
+</panel>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.bo.doceditor" lcid="fr_FR">
+  <key id="tab-documentsrule">ré-écriture documents</key>
+  
+  <key id="rulestatus">Etat</key>
+  <key id="module">module</key>
+  <key id="doclabel">document</key>
+  <key id="model">model</key>
+  <key id="priority">Priorité d'URL</key>
+  <key id="changefreq">Fréquence de modification</key>
+  
+  <key id="active-rule">Activer</key>
+  <key id="exclude-rule">Exclu</key>
+  
+  <key id="override-sitemap">Configurer Site Map</key>
+  <key id="override-exculde">Exclure</key>
+</i18n>

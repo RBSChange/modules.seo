@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="createFolder">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_seo_folder', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createRewriterule">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_website_rewriterule', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createRedirection">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.createDocumentEditor('modules_seo_redirection', listWidget.getSelectedItems()[0].id);]]></body>
+	</action>
+	<action name="createSitemap">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.createDocumentEditor('modules_seo_sitemap', listWidget.getSelectedItems()[0].id);]]></body>
+	</action>
+
+	<action name="moveRewriteRuleHere">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var cmpref = listWidget.getSelectedItems()[0].id;
+			this.executeJSON("MoveRewriteRuleHere", {cmpref: cmpref, lang:this.getContextLang()});
+		]]></body>
+	</action>
+
+	<action name="generateSitemap">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var document = listWidget.getSelectedItems()[0];
+			this.executeJSON("GenerateSitemap", {cmpref: document.id, lang: this.getContextLang()});
+		]]></body>
+	</action>
+
+	<action name="onGenerateSitemapSuccess">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.refreshMainViewDeck();
+		]]></body>
+	</action>
+
+	<action name="compileRewriteRules">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var document = listWidget.getSelectedItems()[0];
+			this.executeJSON("CompileRewriteRules", {cmpref: document.id, lang: this.getContextLang()});
+		]]></body>
+	</action>
+	<action name="onCompileRewriteRulesSuccess">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.refreshMainViewDeck();
+		]]></body>
+	</action>
+
+	<action name="importRedirection">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			try
+			{
+				getController().openModalDialog(this, 'ImportRedirection', {folderId: listWidget.getSelectedIds()[0], module: this});
+			}
+			catch (e)
+			{
+				wCore.error('importMailinglist', [listWidget], e);
+			}
+		]]></body>
+	</action>
+	
+	<action name="compileHtAccess">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var document = listWidget.getSelectedItems()[0];
+			this.executeJSON("CompileHtAccess", {cmpref: document.id, lang: this.getContextLang()});
+		]]></body>
+	</action>
+	<action name="onCompileHtAccessSuccess">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.refreshMainViewDeck();
+		]]></body>
+	</action>		
+	
+</actions>

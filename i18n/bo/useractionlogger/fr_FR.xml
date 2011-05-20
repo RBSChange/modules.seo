@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.bo.useractionlogger" lcid="fr_FR">
+  <key id="insert-folder">insert.folder {documentlabel}</key>
+  <key id="log-insert-folder">log insert folder</key>
+  <key id="update-folder">update.folder {documentlabel}</key>
+  <key id="log-update-folder">log update folder</key>
+  <key id="delete-folder">delete.folder {documentlabel}</key>
+  <key id="log-delete-folder">log delete folder</key>
+  <key id="insert-sitemap">insert.sitemap {documentlabel}</key>
+  <key id="log-insert-sitemap">log insert sitemap</key>
+  <key id="delete-sitemap">delete.sitemap {documentlabel}</key>
+  <key id="log-delete-sitemap">log delete sitemap</key>
+  <key id="activate-sitemap">activate.sitemap {documentlabel}</key>
+  <key id="log-activate-sitemap">log activate sitemap</key>
+  <key id="update-sitemap">update.sitemap {documentlabel}</key>
+  <key id="log-update-sitemap">log update sitemap</key>
+  <key id="insert-redirection">insert.redirection {documentlabel}</key>
+  <key id="log-insert-redirection">log insert redirection</key>
+  <key id="generatesitemap-sitemap">generatesitemap.sitemap {nburl} {documentlabel}</key>
+  <key id="log-generatesitemap-sitemap">log generatesitemap sitemap</key>
+  <key id="moverewriterulehere-folder">moverewriterulehere.folder {nbRulesMoved} {documentlabel}</key>
+  <key id="log-moverewriterulehere-folder">log moverewriterulehere folder</key>
+  <key id="insert-rewriterule">insert.rewriterule {lang} {documentlabel}</key>
+  <key id="log-insert-rewriterule">log insert rewriterule</key>
+  <key id="updatetranslation-rewriterule">updatetranslation.rewriterule {lang} {documentlabel}</key>
+  <key id="log-updatetranslation-rewriterule">log updatetranslation rewriterule</key>
+  <key id="deletelocalization-rewriterule">deletelocalization.rewriterule {documentlabel} {lang}</key>
+  <key id="log-deletelocalization-rewriterule">log deletelocalization rewriterule</key>
+  <key id="delete-rewriterule">delete.rewriterule {documentlabel} {lang}</key>
+  <key id="log-delete-rewriterule">log delete rewriterule</key>
+  <key id="update-rewriterule">update.rewriterule {lang} {documentlabel}</key>
+  <key id="log-update-rewriterule">log update rewriterule</key>
+  <key id="delete-redirection">delete.redirection {documentlabel}</key>
+  <key id="log-delete-redirection">log delete redirection</key>
+  <key id="update-redirection">update.redirection {documentlabel}</key>
+  <key id="log-update-redirection">log update redirection</key>
+  <key id="deactivated-redirection">deactivated.redirection {documentlabel}</key>
+  <key id="log-deactivated-redirection">log deactivated redirection</key>
+  <key id="reactivate-redirection">reactivate.redirection {documentlabel}</key>
+  <key id="log-reactivate-redirection">log reactivate redirection</key>
+</i18n>

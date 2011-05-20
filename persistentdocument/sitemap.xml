@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd" 
+	model-version="1.0" icon="website"
+	has-url="false" publish-on-day-change="false" backoffice-indexable="false">
+	<properties>
+		<add name="website" type="modules_website/website" />
+		<add name="websiteLang" type="String" db-size="2" min-occurs="1"/>
+		<add name="priority" type="String" default-value="0.5" from-list="modules_seo/sitemappriorities"/>
+		<add name="changefreq" type="String" default-value="daily" from-list="modules_seo/sitemapchangefreqs"/>
+		<add name="generationfreq" type="String" default-value="never" from-list="modules_seo/sitemapautogeneration"/>
+		<add name="generationTaskId" type="Integer" />
+		<add name="sitemapExcludedModels" type="LongString" />
+		<add name="sitemapExcludedIds" type="LongString" />
+		<add name="sitemapUrlInfo" type="LongString" />
+	</properties>
+</document>

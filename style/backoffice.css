@@ -1,0 +1,6 @@
+treechildren::-moz-tree-image(modules_seo_sitemap){
+	list-style-image: url(/changeicons/small/website.png);
+}
+treechildren::-moz-tree-image(modules_seo_redirection){
+	list-style-image: url(/changeicons/small/undo.png);
+}

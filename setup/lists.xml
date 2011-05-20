@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+	<binding fileName="modules/seo/persistentdocument/import/seo_binding.xml" />
+
+	<systemfolder module="list" relatedmodule="seo">
+		<staticlist listid="modules_seo/sitemappriorities"
+				label="&amp;modules.seo.list.Sitemappriorities-label;"
+				description="&amp;modules.seo.list.Sitemappriorities-description;">
+				<staticitem label="0" value="0"/>
+				<staticitem label="0.1" value="0.1"/>
+				<staticitem label="0.2" value="0.2"/>
+				<staticitem label="0.3" value="0.3"/>
+				<staticitem label="0.4" value="0.4"/>
+				<staticitem label="0.5" value="0.5"/>
+				<staticitem label="0.6" value="0.6"/>
+				<staticitem label="0.7" value="0.7"/>
+				<staticitem label="0.8" value="0.8"/>
+				<staticitem label="0.9" value="0.9"/>
+				<staticitem label="1" value="1"/>
+		</staticlist>
+		
+		<staticlist listid="modules_seo/sitemapchangefreqs"
+				label="&amp;modules.seo.list.Sitemapchangefreqs-label;"
+				description="&amp;modules.seo.list.Sitemapchangefreqs-description;">
+				<staticitem label="Toujours" value="always"/>
+				<staticitem label="Toutes les heures" value="hourly"/>
+				<staticitem label="Tous les jours" value="daily"/>
+				<staticitem label="Toutes les semaines" value="weekly"/>
+				<staticitem label="Tous les mois" value="monthly"/>
+				<staticitem label="Tous les ans" value="yearly"/>
+				<staticitem label="Jamais" value="never"/>
+		</staticlist>
+		
+		<staticlist listid="modules_seo/sitemapautogeneration"
+				label="&amp;modules.seo.list.Sitemapautogeneration-label;"
+				description="&amp;modules.seo.list.Sitemapautogeneration-description;">
+				<staticitem label="Tous les jours" value="daily"/>
+				<staticitem label="Toutes les semaines" value="weekly"/>
+				<staticitem label="Tous les mois" value="monthly"/>
+				<staticitem label="Pas de génération automatique" value="never"/>
+		</staticlist>
+
+		<dynamiclist listid="modules_seo/sitemapwebsites"
+			label="&amp;modules.seo.list.Sitemapwebsites-label;"
+			description="&amp;modules.seo.list.Sitemapwebsites-description;" />
+
+		<dynamiclist listid="modules_seo/redirectionwebsites"
+			label="&amp;modules.seo.list.Redirectionwebsites-label;" />
+			
+		<dynamiclist listid="modules_seo/newmodelrule"
+			label="&amp;modules.seo.list.newmodelrule-label;" />	
+			
+	</systemfolder>
+</script>

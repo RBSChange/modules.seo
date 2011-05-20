@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.document.sitemap" lcid="fr_FR">
+  <include id="m.generic.document.document"/>
+  <key id="document-name">Site map</key>
+  <key id="website">Site web</key>
+  <key id="website-help">Site web</key>
+  <key id="websitelang">Langue du site</key>
+  <key id="priority">valeur par défaut de 'priority'</key>
+  <key id="changefreq">valeurs par défaut de 'changefreq'</key>
+  <key id="generationfreq">Auto-génération</key>
+  <key id="generationfreq-help">Auto-génération des fichiers Sitemap</key>
+  <key id="baseurl">URL de base</key>
+  <key id="indexurl">URL de l'index du site map</key>
+</i18n>

@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<binding id="sitemap_documentsrule" extends="layout.cDocumentEditor#cDocumentEditorPanelProperties">
+		<content>
+			<xul:vbox flex="1">
+				<xul:cmessageinfo anonid="message" />
+				<xul:hbox anonid="action-bar">
+					<xul:button anonid="save_properties" oncommand="saveProperties()" label="${transui:m.uixul.bo.doceditor.button.save,ucf,attr}"
+						image="{IconsBase}/small/save.png" />
+					<xul:button anonid="reset_properties" oncommand="resetProperties()" label="${transui:m.uixul.bo.doceditor.button.canceledit,ucf,attr}"
+						image="{IconsBase}/small/undo.png" />
+				</xul:hbox>
+				<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
+					<xul:cfield name="rulesGridJSON" id="sitemap_documentsrule_rulesGridJSON" 
+						anonid="field_rulesGridJSON" fieldtype="namedgridlist" flex="1">
+					</xul:cfield>
+					<xul:spacer flex="1" />
+				</xul:scrollbox>
+			</xul:vbox>
+		</content>
+		<implementation>
+			<field name="mFieldNames">["rulesGridJSON"]</field>
+
+			<method name="saveProperties">
+				<body><![CDATA[
+					this.lockCommandsUI();
+					this.showTextMessage("${transui:m.uixul.bo.doceditor.update-in-progress,ucf,js}");
+					this.documentEditor.executeServerAction('documentsrule', 'Update');
+				]]></body>
+			</method>
+		</implementation>
+	</binding>
+	
+	<binding id="cRulesGrid" extends="widgets.cGrid#cAbstractSortableGrid">
+		<implementation>
+			<constructor><![CDATA[
+				this.fireEvent('gridInitialised');
+			]]></constructor>
+			
+			<method name="setCellValue">
+				<parameter name="cell" />
+				<parameter name="name" />
+				<parameter name="dataRow" />
+				<body><![CDATA[					
+					if ('value' in cell)
+					{
+						cell.value = dataRow[name];
+					}
+					else
+					{
+						cell.setAttribute('value', dataRow[name]);
+					}
+				]]></body>
+			</method>
+			
+		</implementation>
+
+		<content>
+			<xul:grid flex="1" anonid="grid" xbl:inherits="disabled" style="padding-left: 5px;padding-right: 5px;">
+				<xul:columns>
+					<xul:column />
+					<xul:column flex="1" />
+					<xul:column />
+					<xul:column />
+					<xul:column />
+				</xul:columns>
+				<xul:rows>
+					<xul:row class="head" anonid="head-row">
+						<xul:label name="status" pack="center" value="${transui:m.seo.bo.doceditor.rulestatus,ucf,attr}" sortonfield="true"/>
+						<xul:label name="model" value="${transui:m.seo.bo.doceditor.model,ucf,attr}" sortonfield="true"/>
+						<xul:label name="doclabel" value="${transui:m.seo.bo.doceditor.doclabel,ucf,attr}" sortonfield="true"/>		
+						<xul:label name="changefreq" value="${transui:m.seo.bo.doceditor.changefreq,ucf,attr}" />
+						<xul:label name="priority" value="${transui:m.seo.bo.doceditor.priority,ucf,attr}" />
+					</xul:row>
+				</xul:rows>
+			</xul:grid>
+
+			<xul:row anonid="template-row" class="document" hidden="true">
+				<xul:gridfield class="rulestatus" />	
+				<xul:label value="" />				
+				<xul:label value="" />
+				<xul:gridfield class="changefreqselector" />
+				<xul:gridfield class="priorityselector" />
+			</xul:row>
+		</content>
+		
+		<handlers>
+			<handler event="gridfieldchange"><![CDATA[
+				var data = event.originalTarget.parentNode.mDataRow;
+				var name = event.originalTarget.className;
+				var value = event.originalTarget.value;
+				wCore.debug('gridfieldchange ' + name + ' ' +  value);
+				if (name === 'rulestatus')
+				{
+					data.status = value;
+				}
+				else if (name === 'changefreqselector')
+				{
+					data.changefreq = value;
+				}
+				else if (name === 'priorityselector')
+				{
+					data.priority = value;
+				}
+				else
+				{
+					return;
+				}
+				var dataset = this.buildDataset();
+				this.mCurrentDatasetKey = this.generateDatasetKey(dataset);
+				this.dispatchChanged();
+			]]></handler>
+		</handlers>
+	</binding>
+	
+	<binding id="cPrioritySelector">
+		<xbl:content>
+			<xul:menulist anonid="list" xbl:inherits="disabled" oncommand="document.getBindingParent(this).valueChanged();">
+				  <xul:menupopup>
+				    <xul:menuitem label="0" value="0"/>
+				    <xul:menuitem label="0.1" value="0.1"/>
+				    <xul:menuitem label="0.2" value="0.2"/>
+				    <xul:menuitem label="0.3" value="0.3"/>
+				    <xul:menuitem label="0.4" value="0.4"/>
+				    <xul:menuitem label="0.5" value="0.5"/>
+				    <xul:menuitem label="0.6" value="0.6"/>
+				    <xul:menuitem label="0.7" value="0.7"/>
+				    <xul:menuitem label="0.8" value="0.8"/>
+				    <xul:menuitem label="0.9" value="0.9"/>
+				    <xul:menuitem label="1" value="1"/>
+				  </xul:menupopup>
+			</xul:menulist>
+		</xbl:content>
+		<xbl:implementation>
+			<constructor><![CDATA[
+				if (this.hasAttribute('value'))
+				{
+					this.value = this.getAttribute('value');
+					this.removeAttribute('value');
+				}
+			]]></constructor>
+			
+			<property name="disabled">
+				<getter><![CDATA[
+					return this.getAttribute('disabled') == 'true';
+				]]></getter>
+				<setter><![CDATA[
+					if (val) {this.setAttribute('disabled', 'true');} else {this.removeAttribute('disabled');}
+				]]></setter>
+			</property>
+			
+			<property name="value">
+				<getter><![CDATA[
+					return document.getAnonymousElementByAttribute(this, 'anonid', 'list').value;
+				]]></getter>
+				<setter><![CDATA[
+					document.getAnonymousElementByAttribute(this, 'anonid', 'list').value = val;
+				]]></setter>
+			</property>	
+			<method name="valueChanged">
+				<body><![CDATA[
+					var evt = document.createEvent("Event");
+					evt.initEvent('gridfieldchange', true, true);
+					this.dispatchEvent(evt);
+				]]></body>
+			</method>
+		</xbl:implementation>
+	</binding>
+
+	<binding id="cChangeFreqSelector">
+		<xbl:content>
+			<xul:menulist anonid="list" xbl:inherits="disabled" oncommand="document.getBindingParent(this).valueChanged();">
+				  <xul:menupopup>
+				    <xul:menuitem label="${transui:modules.seo.list.always,ucf,attr}" value="always"/>
+				    <xul:menuitem label="${transui:modules.seo.list.hourly,ucf,attr}" value="hourly"/>
+				    <xul:menuitem label="${transui:modules.seo.list.daily,ucf,attr}" value="daily"/>
+				    <xul:menuitem label="${transui:modules.seo.list.weekly,ucf,attr}" value="weekly"/>
+				    <xul:menuitem label="${transui:modules.seo.list.monthly,ucf,attr}" value="monthly"/>
+				    <xul:menuitem label="${transui:modules.seo.list.yearly,ucf,attr}" value="yearly"/>
+				    <xul:menuitem label="${transui:modules.seo.list.never,ucf,attr}" value="never"/>
+				  </xul:menupopup>
+			</xul:menulist>		
+		</xbl:content>
+		
+		<xbl:implementation>
+			<constructor><![CDATA[
+				if (this.hasAttribute('value'))
+				{
+					this.value = this.getAttribute('value');
+					this.removeAttribute('value');
+				}
+			]]></constructor>
+
+			<property name="disabled">
+				<getter><![CDATA[
+					return this.getAttribute('disabled') == 'true';
+				]]></getter>
+				<setter><![CDATA[
+					if (val) {this.setAttribute('disabled', 'true');} else {this.removeAttribute('disabled');}
+				]]></setter>
+			</property>
+					
+			<property name="value">
+				<getter><![CDATA[
+					return document.getAnonymousElementByAttribute(this, 'anonid', 'list').value;
+				]]></getter>
+				<setter><![CDATA[
+					document.getAnonymousElementByAttribute(this, 'anonid', 'list').value = val;
+				]]></setter>
+			</property>
+				
+			<method name="valueChanged">
+				<body><![CDATA[
+					var evt = document.createEvent("Event");
+					evt.initEvent('gridfieldchange', true, true);
+					this.dispatchEvent(evt);
+				]]></body>
+			</method>	
+		</xbl:implementation>
+	</binding>
+	
+	<binding id="cRuleStatus">
+		<xbl:content>
+			<xul:menulist xbl:inherits="disabled" anonid="list" oncommand="document.getBindingParent(this).valueChanged();">
+				  <xul:menupopup>
+				  	<xul:menuitem label="${transui:m.seo.bo.doceditor.active-rule,ucf,attr}" value="active"/>
+				    <xul:menuitem label="${transui:m.seo.bo.doceditor.exclude-rule,ucf,attr}" value="exclude"/>
+				  </xul:menupopup>
+			</xul:menulist>		
+		</xbl:content>
+		
+		<xbl:implementation>
+			<constructor><![CDATA[
+				if (this.hasAttribute('value'))
+				{
+					this.value = this.getAttribute('value');
+					this.removeAttribute('value');
+				}
+			]]></constructor>
+			
+			<property name="value">
+				<getter><![CDATA[
+					return document.getAnonymousElementByAttribute(this, 'anonid', 'list').value;
+				]]></getter>
+				<setter><![CDATA[
+					document.getAnonymousElementByAttribute(this, 'anonid', 'list').value = val;
+				]]></setter>
+			</property>
+
+			<method name="valueChanged">
+				<body><![CDATA[
+					var evt = document.createEvent("Event");
+					evt.initEvent('gridfieldchange', true, true);
+					this.dispatchEvent(evt);
+				]]></body>
+			</method>				
+		</xbl:implementation>
+	</binding>
+	
+	<binding id="cDocumentSitemapOverride">
+		<xbl:content>
+			<xul:hbox xbl:inherits="flex">
+				<xul:checkbox anonid="overridesitemap" label="${transui:m.seo.bo.doceditor.override-sitemap,ucf,attr}" checked="false"/>
+				<xul:checkbox anonid="exclude" label="${transui:m.seo.bo.doceditor.override-exculde,ucf,attr}" checked="false"  disabled="true"/>	
+				
+				<xul:label value="${transui:m.seo.bo.doceditor.changefreq,ucf,lab,attr}" />	
+				<xul:gridfield anonid="changefreq" class="changefreqselector" disabled="true"/>
+				
+				<xul:label name="priority" value="${transui:m.seo.bo.doceditor.priority,ucf,lab,attr}" />
+				<xul:gridfield anonid="priority" class="priorityselector" disabled="true" />
+			</xul:hbox>
+		</xbl:content>
+		
+		<xbl:implementation>
+			<constructor><![CDATA[
+				if (this.hasAttribute('value'))
+				{
+					this.value = this.getAttribute('value');
+				}
+			]]></constructor>
+			
+			<property name="value">
+				<getter><![CDATA[
+					return this.getAttribute('value');
+				]]></getter>
+				<setter><![CDATA[
+					if (this.getAttribute('value') != val)
+					{
+						this.setAttribute('value', val);
+					}
+					
+					if (val != '' && val != 'exclude')
+					{
+						var parts = val.split(',');
+						document.getAnonymousElementByAttribute(this, 'anonid', 'changefreq').value  = parts[0];
+						document.getAnonymousElementByAttribute(this, 'anonid', 'priority').value  = parts[1];
+					}
+					this.refreshUIState(val);
+				]]></setter>
+			</property>
+			
+			<method name="dispatchChange">
+			<body><![CDATA[
+					var evt = document.createEvent("Event");
+					evt.initEvent('change' , true, true);
+					this.dispatchEvent(evt);
+				]]></body>
+			</method>
+			
+			<method name="refreshUIState">
+				<parameter name="newValue" />
+				<body><![CDATA[
+					if (newValue == '')
+					{
+						document.getAnonymousElementByAttribute(this, 'anonid', 'overridesitemap').checked = false;
+						
+						document.getAnonymousElementByAttribute(this, 'anonid', 'exclude').disabled  = true;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'changefreq').disabled  = true;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'priority').disabled  = true;
+					} 
+					else if (newValue == 'exclude')
+					{
+						document.getAnonymousElementByAttribute(this, 'anonid', 'overridesitemap').checked = true;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'exclude').checked  = true;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'exclude').disabled  = false;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'changefreq').disabled  = true;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'priority').disabled  = true;					
+					} 
+					else
+					{
+						document.getAnonymousElementByAttribute(this, 'anonid', 'overridesitemap').checked = true;	
+						document.getAnonymousElementByAttribute(this, 'anonid', 'exclude').checked  = false;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'exclude').disabled  = false;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'changefreq').disabled  = false;
+						document.getAnonymousElementByAttribute(this, 'anonid', 'priority').disabled  = false;
+					}
+				]]></body>
+			</method>
+			
+			<method name="getControlValue">
+			<body><![CDATA[
+					return document.getAnonymousElementByAttribute(this, 'anonid', 'changefreq').value 
+						+ ',' + document.getAnonymousElementByAttribute(this, 'anonid', 'priority').value;
+				]]></body>
+			</method>				
+		</xbl:implementation>
+		
+		<handlers>
+			<handler event="command"><![CDATA[
+				if (event.originalTarget.localName == 'checkbox')
+				{
+					var name = event.originalTarget.getAttribute("anonid");
+					if (name == 'overridesitemap')
+					{
+						if (event.originalTarget.checked)
+						{
+							this.value = this.getControlValue();
+						}
+						else
+						{
+							this.value = '';
+						}
+						this.dispatchChange();
+					}
+					else if (name == 'exclude')
+					{
+						if (event.originalTarget.checked)
+						{
+							this.value = 'exclude';
+						}
+						else
+						{
+							this.value = this.getControlValue();
+						}
+						this.dispatchChange();					
+					}
+				}
+			]]></handler>
+			
+			<handler event="gridfieldchange"><![CDATA[
+				var val = this.value;
+				if (val != '' && val != 'exclude')
+				{
+					this.value = this.getControlValue();
+					this.dispatchChange();
+				}
+			]]></handler>
+		</handlers>		
+	</binding>
+</bindings>

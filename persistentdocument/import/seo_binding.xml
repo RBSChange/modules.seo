@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/generic/persistentdocument/import/generic_binding.xml"/>
+  <binding name="sitemap" className="seo_SitemapScriptDocumentElement"/>
+  <binding name="redirection" className="seo_RedirectionScriptDocumentElement"/>
+  <binding name="moverewriterule" className="seo_MoveRewriteruleScriptElement"/>
+</script>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<binding id="importRedirectionDialog" extends="core.wDialog#wDialog">
+		<implementation>
+			<field name="nsIFile">null</field>
+			
+			<constructor><![CDATA[
+				wCore.debug('importRedirectionDialog.constructor');	
+			]]></constructor>
+
+			<method name="onInitialize">
+				<body><![CDATA[
+					this.autoResize(550, 400);
+				]]></body>
+			</method>
+
+			<method name="onCancel">
+				<body><![CDATA[
+					this.controller.closeModalDialog();
+				]]></body>
+			</method>
+
+			<method name="openFilePicker">
+				<body><![CDATA[	
+					var filePicker = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+					filePicker.init(window, "Selectionner un fichier", filePicker.modeOpen);
+					if (filePicker.show() == filePicker.returnOK)
+					{
+						this.setFile(filePicker.file);
+					}
+				]]></body>
+			</method>
+			
+			<method name="setFile">
+				<parameter name="nsIFile" />
+				<body><![CDATA[
+					var field = document.getAnonymousElementByAttribute(this, 'anonid', 'file');
+					field.setAttribute('value', nsIFile.leafName);
+					this.nsIFile = nsIFile;					
+					this.checkImport();
+				]]></body>
+			</method>
+			
+			<method name="checkImport">
+			<body><![CDATA[
+					var websiteAndLang = document.getAnonymousElementByAttribute(this, 'anonid', 'field_websiteAndLang');
+					var button = document.getAnonymousElementByAttribute(this, 'anonid', 'ok');
+					if (websiteAndLang.valid && this.nsIFile != null)
+					{
+						button.removeAttribute('disabled');
+					}
+					else
+					{
+						button.setAttribute('disabled', 'true');
+					}
+				]]></body>
+			</method>
+			
+			<method name="onOk">
+				<body><![CDATA[
+					try
+					{
+						this.showVBoxPanel('importing-panel');
+						var me = this;
+						var websiteAndLang = document.getAnonymousElementByAttribute(this, 'anonid', 'field_websiteAndLang').value;
+						var thread = function(dial)
+						{			
+							var callbackComplete = function(result) {dial.onUploaded(result);};				
+							var parameters = {module: 'seo', action: 'ImportRedirection', cmpref: dial.parameters.folderId, websiteandlang: websiteAndLang};
+							wCore.uploadFile(dial.nsIFile, parameters, callbackComplete);
+						}
+						window.setTimeout(thread, 10, this);
+					}
+					catch (e)
+					{
+						wCore.error("onOk", [nsIFile], e);
+						this.showVBoxPanel('form-panel');
+					}
+				]]></body>
+			</method>
+						
+			<method name="onUploaded">
+				<parameter name="result" />
+				<body><![CDATA[
+					this.showVBoxPanel('message-panel');								
+					if (result.status == 'OK' && result.contents.message)
+					{
+						this.parameters.module.refreshMainViewDeck();	
+						this.appendMessage(result.contents.message);
+						return;			
+					}
+				]]></body>
+			</method>
+			
+			<method name="appendMessage">
+				<parameter name="msg" />
+				<body><![CDATA[
+					var messageBox = document.getAnonymousElementByAttribute(this, 'anonid', 'messageBox');
+					var txts = msg.split("\n");
+					for (var i = 0; i < txts.length; i++)
+					{
+						var node = messageBox.appendChild(document.createElement('description'));
+						node.setAttribute('style', 'max-width: 370px');
+						node.textContent = txts[i];
+					}
+				]]></body>
+			</method>
+			
+			<method name="showVBoxPanel">
+				<parameter name="name" />
+				<body><![CDATA[
+					var panel = document.getAnonymousElementByAttribute(this, 'anonid', 'form-panel');
+					if (name == 'form-panel') {panel.removeAttribute('hidden');} else {panel.setAttribute('hidden', 'true');}
+					
+					panel = document.getAnonymousElementByAttribute(this, 'anonid', 'importing-panel');
+					if (name == 'importing-panel') {panel.removeAttribute('hidden');} else {panel.setAttribute('hidden', 'true');}
+					
+					panel = document.getAnonymousElementByAttribute(this, 'anonid', 'message-panel');
+					if (name == 'message-panel') 
+					{
+						panel.removeAttribute('hidden');
+						var messageBox = document.getAnonymousElementByAttribute(this, 'anonid', 'messageBox');
+						while(messageBox.firstChild)
+						{
+							messageBox.removeChild(messageBox.firstChild);
+						}	
+					} 
+					else 
+					{
+						panel.setAttribute('hidden', 'true');
+					}
+				]]></body>
+			</method>					
+		</implementation>
+		
+		<handlers>	
+			<handler event="fieldError"><![CDATA[
+				this.checkImport();
+			]]></handler>
+			
+			<handler event="fieldValidated"><![CDATA[
+				this.checkImport();
+			]]></handler>
+		</handlers>
+		
+		<xbl:content>
+			<xul:vbox flex="1">
+				<xul:hbox class="dialog-header">
+					<xul:label value="${transui:m.seo.bo.actions.redirection-import-title,ucf,attr}" class="dialog-title" />
+					<xul:spacer flex="1" />
+					<xul:vbox pack="center">
+						<xul:toolbarbutton height="16" width="16" image="{IconsBase}/small/delete.png" oncommand="onCancel();" 
+							tooltiptexts="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+					</xul:vbox>
+				</xul:hbox>
+				<xul:vbox flex="1">			
+					<xul:vbox anonid="form-panel" flex="1">
+						<xul:hbox align="center" pack="start" style="margin-top: 5px">
+							<xul:clabel id="importRedirectionDialog_label" control="importRedirectionDialog_websiteAndLang" 
+								value="${transui:m.seo.document.redirection.domain,ucf,attr}" />				
+							<xul:cfield name="websiteAndLang" id="importRedirectionDialog_websiteAndLang" 
+								anonid="field_websiteAndLang" 
+								fieldtype="dropdownlist" required="true" listid="modules_seo/redirectionwebsites" 
+								hidehelp="true" initialvalue="" emptylabel=""/>
+						</xul:hbox>
+						<html:div xmlns="http://www.w3.org/1999/xhtml">${transui:m.seo.bo.actions.redirection-file-format}</html:div>
+						<xul:hbox align="center" pack="start" style="margin-top: 5px">
+							<xul:label value="${transui:m.seo.bo.actions.file,ucf,attr}" />
+							<xul:textbox readonly="true" anonid="file" size="30" />
+							<xul:toolbarbutton anonid="uploadbutton" image="{IconsBase}/small/upload.png" oncommand="openFilePicker()" 
+								tooltiptext="${transui:m.uixul.bo.doceditor.upload-file-from-disk,ucf,attr}" />
+						</xul:hbox>
+						<xul:spacer flex="1" />
+						<xul:hbox pack="end" align="center">
+							<xul:button image="{IconsBase}/small/check.png" disabled="true" anonid="ok" oncommand="onOk()"	
+								label="${transui:m.seo.bo.actions.upload,ucf,attr}" />
+							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" 
+								label="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+						</xul:hbox>
+					</xul:vbox>
+					
+					<xul:vbox anonid="importing-panel" flex="1" hidden="true">
+						<xul:spacer flex="1" />
+						<xul:hbox pack="center">
+							<xul:spacer flex="1" />
+							<xul:image src="{HttpHost}/media/backoffice/loading_40.gif" height="40px" width="40px" />
+							<xul:spacer flex="1" />
+						</xul:hbox>
+						<xul:spacer flex="1" />
+					</xul:vbox>		
+							
+					<xul:vbox anonid="message-panel" flex="1" hidden="true">
+						<xul:vbox anonid="messageBox" />
+						<xul:spacer flex="1" />						
+						<xul:hbox pack="end" align="center">
+							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" 
+								label="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+						</xul:hbox>
+					</xul:vbox>
+				</xul:vbox>
+			</xul:vbox>
+		</xbl:content>	
+	</binding>
+</bindings>

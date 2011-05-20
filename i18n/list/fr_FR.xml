@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.list" lcid="fr_FR">
+  <key id="sitemapwebsites-label">site sans site map</key>
+  <key id="sitemapwebsites-description">site sans site map</key>
+  
+  <key id="sitemappriorities-label">Sitemap : valeurs de 'priority'</key>
+  <key id="sitemappriorities-description">Liste des valeurs pour l'option 'priority' des fichiers Sitemap</key>
+  
+  <key id="sitemapchangefreqs-label">Sitemap : valeurs de 'changefreq'</key>
+  <key id="sitemapchangefreqs-description">Liste des valeurs pour l'option 'changefreq' des fichiers Sitemap</key>
+  <key id="always">Toujours</key>
+  <key id="hourly">Toutes les heures</key>
+  <key id="daily">Tous les jours</key>
+  <key id="weekly">Toutes les semaines</key>
+  <key id="monthly">Tous les mois</key>
+  <key id="yearly">Tous les ans</key>
+  <key id="never">Jamais</key>
+  
+  <key id="sitemapautogeneration-label">Auto-génération des fichiers Sitemap</key>
+  <key id="sitemapautogeneration-description">Auto-génération des fichiers Sitemap</key>
+  
+  <key id="redirectionwebsites-label">Website / lang disponible pour les redirections</key>
+  <key id="newmodelrule-label">Model de document sans ré-écriture</key>
+</i18n>
+
