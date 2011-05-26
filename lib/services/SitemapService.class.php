@@ -117,12 +117,13 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param seo_persistentdocument_sitemap $sitemap
+	 * @param task_persistentdocument_plannedtask $plannedTask
 	 * @return integer
 	 */
-	public function generate($sitemap)
+	public function generate($sitemap, $plannedTask = null)
 	{
 		$nbURLTotal = 0;
-		
+		$errors = array();
 		$sitemapId = $sitemap->getId();
 		$lang = $sitemap->getWebsiteLang();
 		$baseURL = 'http://' . $sitemap->getWebsite()->getDomainForLang($lang) . '/';
@@ -152,6 +153,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 					file_put_contents($tmpFile, '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n");
 				}
 				
+				if ($plannedTask instanceof task_persistentdocument_plannedtask)
+				{
+					$plannedTask->ping();
+				}
+					
 				$retVal = f_util_System::execHTTPScript($batch, array($sitemapId, $tmpFile, $modelName, $offset, $chunkSize));
 				if (strpos($retVal, ',') !== false)
 				{
@@ -162,7 +168,14 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 				}
 				else
 				{
-					Framework::error(__METHOD__ . ' '. $retVal);
+					if ($plannedTask instanceof task_persistentdocument_plannedtask)
+					{
+						$errors[] = $result;
+					}
+					else
+					{
+						Framework::error(__METHOD__ . ' '. $retVal);
+					}
 					$result = -1;
 				}
 				
@@ -188,6 +201,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 			$tmpFile = null; $partURL = 0; $siteMapPart++; 
 		}
 		
+		if ($plannedTask instanceof task_persistentdocument_plannedtask)
+		{
+			$plannedTask->ping();
+		}
+				
 		$indexContent = array();
 		$indexContent[] = '<?xml version="1.0" encoding="UTF-8"?>';
 		$indexContent[] = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -199,8 +217,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 			$indexContent[] = '	</sitemap>';
 		}
 		$indexContent[] = '</sitemapindex>';
-		file_put_contents($this->getSitemapIndexPath($sitemapId), implode("\n", $indexContent));
-		
+		file_put_contents($this->getSitemapIndexPath($sitemapId), implode("\n", $indexContent));	
+		if (count($errors))
+		{
+			throw new Exception(implode("\n", $errors));
+		}
 		return $nbURLTotal;
 	}
 	

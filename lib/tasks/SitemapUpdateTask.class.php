@@ -12,7 +12,7 @@ class seo_SitemapUpdateTask extends task_SimpleSystemTask
 			$nextRunDate = seo_SitemapService::getInstance()->getNextGenerationDate($sitemap);
 			if ($nextRunDate !== null)
 			{
-				seo_SitemapService::getInstance()->generate($sitemap);
+				seo_SitemapService::getInstance()->generate($sitemap, $this->plannedTask);
 				$this->plannedTask->reSchedule($nextRunDate);
 			}
 		}
