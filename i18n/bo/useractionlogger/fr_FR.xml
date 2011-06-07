@@ -38,4 +38,6 @@
   <key id="log-deactivated-redirection">log deactivated redirection</key>
   <key id="reactivate-redirection">reactivate.redirection {documentlabel}</key>
   <key id="log-reactivate-redirection">log reactivate redirection</key>
+  <key id="deactivated-sitemap">deactivated.sitemap {documentlabel}</key>
+  <key id="log-deactivated-sitemap">log deactivated sitemap</key>
 </i18n>

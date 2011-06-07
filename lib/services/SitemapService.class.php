@@ -131,9 +131,6 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$batch = f_util_FileUtils::buildRelativePath('modules', 'seo', 'lib', 'bin', 'generateSitemap.php');
 		$modelsName = website_UrlRewritingService::getInstance()->getModelNamesAllowURL();
 		$excludeModels = $sitemap->getSitemapExcludedModelsArray();
-		//Clean DB Connection
-		f_persistentdocument_PersistentProvider::getInstance()->refresh();
-		
 		
 		$tmpFile = null; $partURL = 0; $siteMapPart = 0;
 		$chunkSize = 100;
@@ -242,9 +239,10 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		{
 			$this->tm->beginTransaction();
 			$website = $sitemap->getWebsite();
+			$websiteId = $website->getId();
 			$lang = $sitemap->getWebsiteLang();
 			$baseURL = $wsurs->getRewriteLink($website, $lang, '/')->getUrl();
-			$sitemapKey = 'sitemap_' . $website->getId() . '/'. $lang;
+			$sitemapKey = 'sitemap_' . $websiteId . '/'. $lang;
 			
 			$modelsInfo = $sitemap->getSitemapUrlInfoArray();
 			if (isset($modelsInfo[$modelName]))
@@ -274,36 +272,45 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 			$chunk = count($documents);	
 			foreach ($documents as $document) 
 			{
-				$freq = $changeFreq;
-				$prio = $priority;
-				
-				if ($document->hasMeta($sitemapKey))
+				if ($document instanceof f_persistentdocument_PersistentDocument) 
 				{
-					$sitemapInfo = $document->getMeta($sitemapKey);
-					if ($sitemapInfo == 'exclude')
+					$websiteIds = $document->getDocumentService()->getWebsiteIds($document);
+					if (is_array($websiteIds) && !in_array($websiteId, $websiteIds))
 					{
 						continue;
 					}
-					else if ($sitemapInfo != '')
+					
+					$freq = $changeFreq;
+					$prio = $priority;
+					if ($document->hasMeta($sitemapKey))
 					{
-						list ($freq, $prio) = explode(',', $sitemapInfo);
+						$sitemapInfo = $document->getMeta($sitemapKey);
+						if ($sitemapInfo == 'exclude')
+						{
+							continue;
+						}
+						else if ($sitemapInfo != '')
+						{
+							list ($freq, $prio) = explode(',', $sitemapInfo);
+						}
+					}
+					
+					$link = $wsurs->evaluateDocumentLink($document, $website, $lang);
+					if ($link !== null)
+					{
+						$url =  $link->getUrl();
+						if (strpos($url, $baseURL) === 0)
+						{
+							fwrite($filerc, "\n\t<url>\n\t\t<loc>"  .  htmlspecialchars($url, ENT_COMPAT, 'UTF-8') . "</loc>");
+							fwrite($filerc, "\n\t\t<lastmod>"  .  date('c', date_Calendar::getInstance($document->getModificationdate())->getTimestamp()) . "</lastmod>");
+							fwrite($filerc, "\n\t\t<changefreq>"  .  $freq . "</changefreq>");
+							fwrite($filerc, "\n\t\t<priority>"  .  $prio . "</priority>");
+							fwrite($filerc, "\n\t</url>");
+							$nbUrl++;
+						}
 					}
 				}
-				
-				$link = $wsurs->evaluateDocumentLink($document, $website, $lang);
-				if ($link !== null)
-				{
-					$url =  $link->getUrl();
-					if (strpos($url, $baseURL) === 0)
-					{
-						fwrite($filerc, "\n\t<url>\n\t\t<loc>"  .  htmlspecialchars($url, ENT_COMPAT, 'UTF-8') . "</loc>");
-						fwrite($filerc, "\n\t\t<lastmod>"  .  date('c', date_Calendar::getInstance($document->getModificationdate())->getTimestamp()) . "</lastmod>");
-						fwrite($filerc, "\n\t\t<changefreq>"  .  $freq . "</changefreq>");
-						fwrite($filerc, "\n\t\t<priority>"  .  $prio . "</priority>");
-						fwrite($filerc, "\n\t</url>");
-						$nbUrl++;
-					}
-				}
+
 			}
 			$this->tm->commit();
 		}
