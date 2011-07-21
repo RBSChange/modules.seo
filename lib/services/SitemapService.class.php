@@ -348,6 +348,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	 */
 	private function compressFile($source, $dest)
 	{		
+		f_util_FileUtils::mkdir(dirname($dest));
 		$fp_out = gzopen($dest, 'w9');
 		if ($fp_out)
 		{
