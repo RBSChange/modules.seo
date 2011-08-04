@@ -3,11 +3,11 @@
  * seo_CompileHtAccessAction
  * @package modules.seo.actions
  */
-class seo_CompileHtAccessAction extends f_action_BaseJSONAction
+class seo_CompileHtAccessAction extends change_JSONAction
 {
 	/**
-	 * @param Context $context
-	 * @param ChangeRequest $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{

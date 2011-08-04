@@ -1,9 +1,9 @@
 <?php
-class seo_ImportRedirectionAction extends f_action_BaseJSONAction
+class seo_ImportRedirectionAction extends change_JSONAction
 {
 	/**
-	 * @param Context $context
-	 * @param ChangeRequest $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{

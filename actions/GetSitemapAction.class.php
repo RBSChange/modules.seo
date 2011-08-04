@@ -3,11 +3,11 @@
  * seo_GetSitemapAction
  * @package modules.seo.actions
  */
-class seo_GetSitemapAction extends f_action_BaseAction
+class seo_GetSitemapAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param ChangeRequest $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -34,7 +34,7 @@ class seo_GetSitemapAction extends f_action_BaseAction
 		if ($path === null)
 		{
 			$context->getController()->forward('website', 'Error404');
-			return View::NONE;
+			return change_View::NONE;
 		}
 		
 		if (f_util_StringUtils::endsWith($path, '.xml', f_util_StringUtils::CASE_SENSITIVE))
@@ -47,7 +47,7 @@ class seo_GetSitemapAction extends f_action_BaseAction
 		}
 		header('Content-length: '.filesize($path));
 		readfile($path);
-		return View::NONE;
+		return change_View::NONE;
 	}
 	
 	/**
