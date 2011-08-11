@@ -1,5 +1,5 @@
 <?php
-list($sitemapId, $tmpFile, $modelName, $offset, $chunkSize) = $_POST['argv'];
+list($sitemapId, $tmpFile, $modelName, $offset, $chunkSize) = $arguments;
 
 $sitemap = seo_persistentdocument_sitemap::getInstanceById($sitemapId);
 $lang = $sitemap->getWebsiteLang();
