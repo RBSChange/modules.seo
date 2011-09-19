@@ -30,7 +30,7 @@ class commands_seo_CompileRedirections extends c_ChangescriptCommand
 	public function getEvents()
 	{
 		return array(
-			array('name' => 'before', 'target' => 'compile-htaccess'),
+			array('name' => 'before', 'target' => 'website.compile-htaccess'),
 		);
 	}
 
