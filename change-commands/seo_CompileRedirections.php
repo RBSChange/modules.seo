@@ -3,7 +3,7 @@
  * commands_seo_CompileRedirections
  * @package modules.seo.command
  */
-class commands_seo_CompileRedirections extends commands_AbstractChangeCommand
+class commands_seo_CompileRedirections extends c_ChangescriptCommand
 {
 	/**
 	 * @return String
@@ -24,14 +24,14 @@ class commands_seo_CompileRedirections extends commands_AbstractChangeCommand
 		return "Compile specific redirection";
 	}
 	
-	
-	
 	/**
-	 * @see c_ChangescriptCommand::isHidden()
+	 * @see c_ChangescriptCommand::getEvents()
 	 */
-	public function isHidden()
+	public function getEvents()
 	{
-		return true;
+		return array(
+			array('name' => 'before', 'target' => 'compile-htaccess'),
+		);
 	}
 
 	/**

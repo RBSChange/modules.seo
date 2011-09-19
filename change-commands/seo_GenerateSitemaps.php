@@ -3,7 +3,7 @@
  * commands_seo_GenerateSitemaps
  * @package modules.seo.command
  */
-class commands_seo_GenerateSitemaps extends commands_AbstractChangeCommand
+class commands_seo_GenerateSitemaps extends c_ChangescriptCommand
 {
 	/**
 	 * @return String
