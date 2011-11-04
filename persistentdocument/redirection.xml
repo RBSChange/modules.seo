@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd" 
-	model-version="1.0" icon="undo" linked-to-root-module="false" has-url="false"
-	publish-on-day-change="false" backoffice-indexable="false">
-	<properties>
-		<add name="website" type="modules_website/website" />
-		<add name="websiteLang" type="String" db-size="2"/>
-		<add name="oldUrl" type="String" min-occurs="1" default-value="/">
-			<constraints>matches:^/[^\s]{1,254}$</constraints>
-		</add>
-		<add name="newUrl" type="String" min-occurs="1" default-value="http://">
-			<constraints>matches:^http\://[^\s]{1,243}$</constraints>
-		</add>	
-	</properties>
-	<statuses default="ACTIVE" />
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" model-version="1.0" icon="undo" linked-to-root-module="false" has-url="false" publish-on-day-change="false" backoffice-indexable="false">
+  <properties>
+    <property name="website" type="modules_website/website"/>
+    <property name="websiteLang" type="String" db-size="2"/>
+    <property name="oldUrl" type="String" min-occurs="1" default-value="/">
+      <constraint name="matches" parameter="^/[^\s]{1,254}$"/>
+    </property>
+    <property name="newUrl" type="String" min-occurs="1" default-value="http://">
+      <constraint name="matches" parameter="^http\://[^\s]{1,243}$"/>
+    </property>
+  </properties>
+  <statuses default="ACTIVE"/>
 </document>
