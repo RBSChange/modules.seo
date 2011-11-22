@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.document.sitemap" lcid="en_GB">
+  <key id="baseurl">Base URL</key>
+  <key id="changefreq">default values for 'changefreq'</key>
+  <key id="document-name">Sitemap</key>
+  <key id="generationfreq">Auto-generation</key>
+  <key id="generationfreq-help">Auto-generation of sitemap files</key>
+  <key id="indexurl">URL of sitemap index</key>
+  <key id="priority">default value of 'priority'</key>
+  <key id="website">Website</key>
+  <key id="website-help">Website</key>
+  <key id="websitelang">Site language</key>
+</i18n>
