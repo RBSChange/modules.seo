@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.document.redirection" lcid="en_GB">
+  <include id="m.generic.document.document"/>
+  <key id="document-name">redirect</key>
+  <key id="domain">Domain</key>
+  <key id="newurl">New URL</key>
+  <key id="oldurl">Old path</key>
+  <key id="oldurl-resume">Old URL</key>
+</i18n>

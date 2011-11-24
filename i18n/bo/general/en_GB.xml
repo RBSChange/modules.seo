@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.seo.bo.general" lcid="en_GB">
+  <key id="module-name">SEO</key>
+  <key id="redirection-rules">Redirects</key>
+  <key id="rewrite-rules">Rules</key>
+  <key id="system-folder-name">SEO</key>
+</i18n>
