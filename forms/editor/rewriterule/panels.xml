@@ -2,8 +2,8 @@
 <panels modelname="modules_website/rewriterule">
   <panel name="resume"/>
   <panel name="properties"/>
+  <panel name="localization"/>
   <panel name="publication"/>
   <panel name="history"/>
   <panel name="create"/>
-  <panel name="localization"/>
 </panels>
