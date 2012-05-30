@@ -155,7 +155,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 					$plannedTask->ping();
 				}
 					
-				$retVal = f_util_System::execHTTPScript($batch, array($sitemapId, $tmpFile, $modelName, $offset, $chunkSize));
+				$retVal = f_util_System::execScript($batch, array($sitemapId, $tmpFile, $modelName, $offset, $chunkSize));
 				if (strpos($retVal, ',') !== false)
 				{
 					//Framework::info(__METHOD__ . ' '. $retVal);
