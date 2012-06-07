@@ -270,11 +270,13 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 				$documents = $query->find();
 			}
 			$chunk = count($documents);	
+			$ps = change_PermissionService::getInstance();
 			foreach ($documents as $document) 
 			{
 				if ($document instanceof f_persistentdocument_PersistentDocument) 
 				{
-					$websiteIds = $document->getDocumentService()->getWebsiteIds($document);
+					$ds = $document->getDocumentService();
+					$websiteIds = $ds->getWebsiteIds($document);
 					if (is_array($websiteIds) && !in_array($websiteId, $websiteIds))
 					{
 						continue;
@@ -301,12 +303,20 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 						$url =  $link->getUrl();
 						if (strpos($url, $baseURL) === 0)
 						{
-							fwrite($filerc, "\n\t<url>\n\t\t<loc>"  .  htmlspecialchars($url, ENT_COMPAT, 'UTF-8') . "</loc>");
-							fwrite($filerc, "\n\t\t<lastmod>"  .  date('c', date_Calendar::getInstance($document->getModificationdate())->getTimestamp()) . "</lastmod>");
-							fwrite($filerc, "\n\t\t<changefreq>"  .  $freq . "</changefreq>");
-							fwrite($filerc, "\n\t\t<priority>"  .  $prio . "</priority>");
-							fwrite($filerc, "\n\t</url>");
-							$nbUrl++;
+							$page = $ds->getDisplayPage($document);
+							if ($page)
+							{
+								$accessorIds = $ps->getAccessorIdsForRoleByDocumentId('modules_website.AuthenticatedFrontUser', $page->getId());
+								if (count($accessorIds) == 0)
+								{
+									fwrite($filerc, "\n\t<url>\n\t\t<loc>"  .  htmlspecialchars($url, ENT_COMPAT, 'UTF-8') . "</loc>");
+									fwrite($filerc, "\n\t\t<lastmod>"  .  date('c', date_Calendar::getInstance($document->getModificationdate())->getTimestamp()) . "</lastmod>");
+									fwrite($filerc, "\n\t\t<changefreq>"  .  $freq . "</changefreq>");
+									fwrite($filerc, "\n\t\t<priority>"  .  $prio . "</priority>");
+									fwrite($filerc, "\n\t</url>");
+									$nbUrl++;
+								}
+							}
 						}
 					}
 				}

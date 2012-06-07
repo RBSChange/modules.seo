@@ -7,29 +7,26 @@ class commands_seo_GenerateSitemaps extends c_ChangescriptCommand
 {
 	/**
 	 * @return String
-	 * @example "<moduleName> <name>"
 	 */
-	function getUsage()
+	public function getUsage()
 	{
 		return "";
 	}
 
 	/**
 	 * @return String
-	 * @example "initialize a document"
 	 */
-	function getDescription()
+	public function getDescription()
 	{
 		return "generate all published sitmap";
 	}
 	
-
 	/**
 	 * @param String[] $params
 	 * @param array<String, String> $options where the option array key is the option name, the potential option value or true
 	 * @see c_ChangescriptCommand::parseArgs($args)
 	 */
-	function _execute($params, $options)
+	public function _execute($params, $options)
 	{
 		$this->message("== Generate sitemaps ==");
 		$this->loadFramework();
