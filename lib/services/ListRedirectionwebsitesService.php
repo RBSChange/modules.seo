@@ -3,7 +3,7 @@
  * seo_ListRedirectionwebsitesService
  * @package modules.seo.lib.services
  */
-class seo_ListRedirectionwebsitesService extends BaseService implements list_ListItemsService
+class seo_ListRedirectionwebsitesService extends change_BaseService implements list_ListItemsService
 {
 	/**
 	 * @var seo_ListRedirectionwebsitesService

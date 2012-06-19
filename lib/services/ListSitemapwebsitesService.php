@@ -3,7 +3,7 @@
  * seo_ListSitemapwebsitesService
  * @package modules.seo.lib.services
  */
-class seo_ListSitemapwebsitesService extends BaseService implements list_ListItemsService
+class seo_ListSitemapwebsitesService extends change_BaseService implements list_ListItemsService
 {
 	/**
 	 * @var seo_ListSitemapwebsitesService

@@ -3,7 +3,7 @@
  * seo_ListNewmodelruleService
  * @package modules.seo.lib.services
  */
-class seo_ListNewmodelruleService extends BaseService implements list_ListItemsService
+class seo_ListNewmodelruleService extends change_BaseService implements list_ListItemsService
 {
 	/**
 	 * @var seo_ListNewmodelruleService
