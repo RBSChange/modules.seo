@@ -1,27 +1,10 @@
 <?php
 /**
- * seo_ListSitemapwebsitesService
- * @package modules.seo.lib.services
+ * @package modules.seo
+ * @method seo_ListSitemapwebsitesService getInstance()
  */
 class seo_ListSitemapwebsitesService extends change_BaseService implements list_ListItemsService
 {
-	/**
-	 * @var seo_ListSitemapwebsitesService
-	 */
-	private static $instance;
-
-	/**
-	 * @return seo_ListSitemapwebsitesService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @see list_persistentdocument_dynamiclist::getItems()
 	 * @return list_Item[]
@@ -50,13 +33,4 @@ class seo_ListSitemapwebsitesService extends change_BaseService implements list_
 	{
 		$this->parameters = $parameters;
 	}
-	
-	/**
-	 * @see list_persistentdocument_dynamiclist::getItemByValue()
-	 * @param string $value;
-	 * @return list_Item
-	 */
-//	public function getItemByValue($value)
-//	{
-//	}
 }

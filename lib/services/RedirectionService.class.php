@@ -1,27 +1,10 @@
 <?php
 /**
- * seo_RedirectionService
  * @package modules.seo
+ * @method seo_RedirectionService getInstance()
  */
 class seo_RedirectionService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var seo_RedirectionService
-	 */
-	private static $instance;
-
-	/**
-	 * @return seo_RedirectionService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return seo_persistentdocument_redirection
 	 */
@@ -38,7 +21,7 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_seo/redirection');
+		return $this->getPersistentProvider()->createQuery('modules_seo/redirection');
 	}
 	
 	/**
@@ -49,7 +32,7 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_seo/redirection', false);
+		return $this->getPersistentProvider()->createQuery('modules_seo/redirection', false);
 	}
 	
 	public function compileAll()
@@ -124,7 +107,7 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param seo_persistentdocument_redirection $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
+	 * @param integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
 	protected function preSave($document, $parentNodeId)
@@ -134,7 +117,6 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 			$document->setLabel($document->getNewUrl());
 		}
 	}
-	
 	
 	/**
 	 * @param seo_persistentdocument_redirection $document

@@ -16,16 +16,16 @@ class seo_ImportRedirectionAction extends change_JSONAction
 		
 		if (!count($_FILES))
 		{
-			return $this->sendJSON(array('message' => LocaleService::getInstance()->transBO('m.seo.bo.actions.file-not-found')));
+			return $this->sendJSON(array('message' => LocaleService::getInstance()->trans('m.seo.bo.actions.file-not-found')));
 		}
 		$filePath = $_FILES['filename']['tmp_name'];
 		$redirectionCount = seo_RedirectionService::getInstance()->importFile($filePath, $websiteId, $lang, $folderId);		
-		return $this->sendJSON(array('message' => LocaleService::getInstance()->transBO('m.seo.bo.actions.redirection-imported', 
+		return $this->sendJSON(array('message' => LocaleService::getInstance()->trans('m.seo.bo.actions.redirection-imported', 
 			array('ucf'), array('redirectionCount' => $redirectionCount))));
 	}
 
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isSecure()
 	{

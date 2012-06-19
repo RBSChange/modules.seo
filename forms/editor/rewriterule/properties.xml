@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
-  <section labeli18n="m.uixul.bo.doceditor.fieldsgroup.title">
-    <field name="template" class="template" size="100"/>
-  </section>
-  
+	<section labeli18n="m.uixul.bo.doceditor.fieldsgroup.title">
+		<field name="template" class="template" size="100" />
+	</section>
 	<xul>
 		<javascript>
 			<constructor><![CDATA[
 				this.extendMethod("fireInitializeComplete", this.initializeCompleteTemplate);
 			]]></constructor>
-			
 			<method name="initializeCompleteTemplate">
 				<parameter name="result" />
 				<body><![CDATA[
@@ -27,7 +25,6 @@
 				}
 				]]></body>
 			</method>
-			
 			<method name="setMenuItems">
 				<parameter name="metas" />
 				<parameter name="field" />

@@ -1,27 +1,10 @@
 <?php
 /**
- * seo_ListNewmodelruleService
- * @package modules.seo.lib.services
+ * @package modules.seo
+ * @method seo_ListNewmodelruleService getInstance()
  */
 class seo_ListNewmodelruleService extends change_BaseService implements list_ListItemsService
 {
-	/**
-	 * @var seo_ListNewmodelruleService
-	 */
-	private static $instance;
-
-	/**
-	 * @return seo_ListNewmodelruleService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @see list_persistentdocument_dynamiclist::getItems()
 	 * @return list_Item[]
@@ -37,10 +20,10 @@ class seo_ListNewmodelruleService extends change_BaseService implements list_Lis
 			if ($rule === null)
 			{
 				$baseKey = str_replace(array('modules_', '/'), array('m.', '.document.'), $modelName);
-				$label = LocaleService::getInstance()->transBO($baseKey . '.document-name', array('html'));
+				$label = LocaleService::getInstance()->trans($baseKey . '.document-name', array('html'));
 				
 				$keyParts = explode('.', $baseKey);
-				$module =  LocaleService::getInstance()->transBO('m.'.$keyParts[1].'.bo.general.module-name' , array('html'));
+				$module =  LocaleService::getInstance()->trans('m.'.$keyParts[1].'.bo.general.module-name' , array('html'));
 				
 				$items[] = new list_Item($module . ' / ' . $label, $modelName);
 			}
@@ -61,13 +44,4 @@ class seo_ListNewmodelruleService extends change_BaseService implements list_Lis
 	{
 		$this->parameters = $parameters;
 	}
-	
-	/**
-	 * @see list_persistentdocument_dynamiclist::getItemByValue()
-	 * @param string $value;
-	 * @return list_Item
-	 */
-//	public function getItemByValue($value)
-//	{
-//	}
 }

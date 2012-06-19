@@ -1,27 +1,10 @@
 <?php
 /**
- * seo_SitemapService
  * @package modules.seo
+ * @method seo_SitemapService getInstance()
  */
 class seo_SitemapService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var seo_SitemapService
-	 */
-	private static $instance;
-
-	/**
-	 * @return seo_SitemapService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return seo_persistentdocument_sitemap
 	 */
@@ -38,7 +21,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_seo/sitemap');
+		return $this->getPersistentProvider()->createQuery('modules_seo/sitemap');
 	}
 	
 	/**
@@ -49,7 +32,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_seo/sitemap', false);
+		return $this->getPersistentProvider()->createQuery('modules_seo/sitemap', false);
 	}
 	
 	/**
@@ -237,7 +220,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$wsurs = website_UrlRewritingService::getInstance();
 		try 
 		{
-			$this->tm->beginTransaction();
+			$this->getTransactionManager()->beginTransaction();
 			$website = $sitemap->getWebsite();
 			$websiteId = $website->getId();
 			$lang = $sitemap->getWebsiteLang();
@@ -263,7 +246,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 			}
 			else
 			{
-				$query =  $this->pp->createQuery($modelName, false)
+				$query =  $this->getPersistentProvider()->createQuery($modelName, false)
 								->add(Restrictions::published())
 								->addOrder(Order::asc('id'))
 								->setFirstResult($offset)->setMaxResults($chunkSize);	
@@ -322,11 +305,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 				}
 
 			}
-			$this->tm->commit();
+			$this->getTransactionManager()->commit();
 		}
 		catch (Exception $e)
 		{
-			$this->tm->rollBack($e);
+			$this->getTransactionManager()->rollBack($e);
 		}
 		
 		fclose($filerc);
@@ -336,7 +319,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	/**
 	 * @param integer $sitemapId
 	 * @param integer $siteMapPart
-	 * @return String
+	 * @return string
 	 */
 	private function getSitemapPartPath($sitemapId, $siteMapPart)
 	{
@@ -345,7 +328,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param integer $sitemapId
-	 * @return String
+	 * @return string
 	 */
 	private function getSitemapIndexPath($sitemapId)
 	{
@@ -449,7 +432,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param seo_persistentdocument_sitemap $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
+	 * @param integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
 	protected function preSave($document, $parentNodeId)
@@ -470,7 +453,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param seo_persistentdocument_sitemap $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function postInsert($document, $parentNodeId)
@@ -491,7 +474,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param seo_persistentdocument_sitemap $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function preUpdate($document, $parentNodeId)
@@ -515,7 +498,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$resume['properties']['baseURL'] = $baseURL->getUrl();
 		$resume['properties']['indexURL'] = $this->getIndexURL($document);
 		$statusKey  = 'm.seo.bo.actions.' . ($this->getIndexFilePath($document) !== null ? 'refresh' : 'create');
-		$resume['properties']['generate'] = LocaleService::getInstance()->transBO($statusKey, array('ucf', 'html'));
+		$resume['properties']['generate'] = LocaleService::getInstance()->trans($statusKey, array('ucf', 'html'));
 		return $resume;
 	}
 	
@@ -534,7 +517,7 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		foreach ($modelsName as $modelName) 
 		{
 			$infos = f_persistentdocument_PersistentDocumentModel::getModelInfo($modelName);
-			$doclabel = LocaleService::getInstance()->transBO('m.' . $infos['module'] . '.document.'. $infos['document'] . '.document-name');
+			$doclabel = LocaleService::getInstance()->trans('m.' . $infos['module'] . '.document.'. $infos['document'] . '.document-name');
 			$row = array('status' => 'active', 'model' => $modelName, 'doclabel' => $doclabel, 
 				'changefreq' => $defFreq, 'priority' => $defPrio, 'module' => $infos['module']);
 			

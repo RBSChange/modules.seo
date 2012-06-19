@@ -11,7 +11,7 @@ class seo_Setup extends object_InitDataSetup
 	}
 
 	/**
-	 * @return String[]
+	 * @return string[]
 	 */
 	public function getRequiredPackages()
 	{

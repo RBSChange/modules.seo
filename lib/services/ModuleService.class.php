@@ -1,27 +1,10 @@
 <?php
 /**
- * @package modules.seo.lib.services
+ * @package modules.seo
+ * @method seo_ModuleService getInstance()
  */
 class seo_ModuleService extends ModuleBaseService
 {
-	/**
-	 * Singleton
-	 * @var seo_ModuleService
-	 */
-	private static $instance = null;
-
-	/**
-	 * @return seo_ModuleService
-	 */
-	public static function getInstance()
-	{
-		if (is_null(self::$instance))
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-	
 	/**
 	 * @param generic_persistentdocument_folder $folder
 	 * @return integer
@@ -91,5 +74,4 @@ class seo_ModuleService extends ModuleBaseService
 		}
 		return $contents;
 	}
-
 }
