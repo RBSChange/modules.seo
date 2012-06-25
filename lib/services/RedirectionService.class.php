@@ -120,6 +120,19 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param seo_persistentdocument_redirection $document
+	 * @param Integer $parentNodeId
+	 */
+	protected function postInsert($document, $parentNodeId)
+	{
+		// Replace linked-to-root-module document model attribute.
+		if ($document->getTreeId() === null)
+		{
+			TreeService::getInstance()->newLastChild(ModuleService::getInstance()->getRootFolderId('seo'), $document->getId());
+		}
+	}
+	
+	/**
+	 * @param seo_persistentdocument_redirection $document
 	 * @param string $forModuleName
 	 * @param array $allowedSections
 	 * @return array
