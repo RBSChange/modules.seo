@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.seo.bo.actions" lcid="fr_FR">
-  <key id="create_">créer</key>
-  <key id="createrewriterule">créer une règle de réécriture</key>
-  <key id="moverewriterulehere">déplacer les règles ici</key>
-  <key id="createredirection">créer une redirection</key>
-  <key id="createsitemap">créer un site map</key>
-  <key id="generatesitemap">générer</key>
-  <key id="compilerewriterules">compiler</key>
-  <key id="refresh">ré-générer</key>
-  <key id="create">créer</key>
-  <key id="files">fichiers</key>
-  <key id="compile-rules">Compilation des règles</key>
-  
-  <key id="importredirection">importer des redirections</key>
-  <key id="file-not-found">Fichier manquant</key>
-  <key id="redirection-imported">{redirectionCount} rédirection(s) on été importé</key>
-  
-  <key id="redirection-import-title">Importer un fichier de redirections</key>
-  <key id="redirection-file-format" format="html"><![CDATA[
+	<key id="create_">créer</key>
+	<key id="createrewriterule">créer une règle de réécriture</key>
+	<key id="moverewriterulehere">déplacer les règles ici</key>
+	<key id="createredirection">créer une redirection</key>
+	<key id="createsitemap">créer un site map</key>
+	<key id="generatesitemap">générer</key>
+	<key id="compilerewriterules">compiler</key>
+	<key id="refresh">ré-générer</key>
+	<key id="create">créer</key>
+	<key id="files">fichiers</key>
+	<key id="compile-rules">Compilation des règles</key>
+	<key id="importredirection">importer des redirections</key>
+	<key id="file-not-found">Fichier manquant</key>
+	<key id="redirection-imported">{redirectionCount} rédirection(s) on été importé</key>
+	<key id="redirection-import-title">Importer un fichier de redirections</key>
+	<key id="redirection-file-format" format="html"><![CDATA[
  	<p>Le fichier doit être au format <em>CSV</em> avec les propriétés suivantes :</p>
 	<ul>
 		<li>la 1ere colone contient l'ancienne URL et commence par le caractère /</li>
@@ -29,9 +27,8 @@
 			<strong>/anciennepage.html;http://mon.site.fr/nouvellepage.html</strong>
 		</li>
 	</ul> 
-  ]]></key>
-  <key id="file">fichier CSV</key>
-  <key id="upload">Importer</key>
-  
-  <key id="compilehtaccess">compiler les redirections</key>
+	]]></key>
+	<key id="file">fichier CSV</key>
+	<key id="upload">Importer</key>
+	<key id="compilehtaccess">compiler les redirections</key>
 </i18n>

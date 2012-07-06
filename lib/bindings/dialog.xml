@@ -147,36 +147,36 @@
 		<xbl:content>
 			<xul:vbox flex="1">
 				<xul:hbox class="dialog-header">
-					<xul:label value="${transui:m.seo.bo.actions.redirection-import-title,ucf,attr}" class="dialog-title" />
+					<xul:label value="${trans:m.seo.bo.actions.redirection-import-title,ucf,attr}" class="dialog-title" />
 					<xul:spacer flex="1" />
 					<xul:vbox pack="center">
 						<xul:toolbarbutton height="16" width="16" image="{IconsBase}/small/delete.png" oncommand="onCancel();" 
-							tooltiptexts="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+							tooltiptexts="${trans:m.uixul.bo.dialog.cancel,ucf,attr}" />
 					</xul:vbox>
 				</xul:hbox>
 				<xul:vbox flex="1">			
 					<xul:vbox anonid="form-panel" flex="1">
 						<xul:hbox align="center" pack="start" style="margin-top: 5px">
 							<xul:clabel id="importRedirectionDialog_label" control="importRedirectionDialog_websiteAndLang" 
-								value="${transui:m.seo.document.redirection.domain,ucf,attr}" />				
+								value="${trans:m.seo.document.redirection.domain,ucf,attr}" />				
 							<xul:cfield name="websiteAndLang" id="importRedirectionDialog_websiteAndLang" 
 								anonid="field_websiteAndLang" 
 								fieldtype="dropdownlist" required="true" listid="modules_seo/redirectionwebsites" 
 								hidehelp="true" initialvalue="" emptylabel=""/>
 						</xul:hbox>
-						<html:div xmlns="http://www.w3.org/1999/xhtml">${transui:m.seo.bo.actions.redirection-file-format}</html:div>
+						<html:div xmlns="http://www.w3.org/1999/xhtml">${trans:m.seo.bo.actions.redirection-file-format}</html:div>
 						<xul:hbox align="center" pack="start" style="margin-top: 5px">
-							<xul:label value="${transui:m.seo.bo.actions.file,ucf,attr}" />
+							<xul:label value="${trans:m.seo.bo.actions.file,ucf,attr}" />
 							<xul:textbox readonly="true" anonid="file" size="30" />
 							<xul:toolbarbutton anonid="uploadbutton" image="{IconsBase}/small/upload.png" oncommand="openFilePicker()" 
-								tooltiptext="${transui:m.uixul.bo.doceditor.upload-file-from-disk,ucf,attr}" />
+								tooltiptext="${trans:m.uixul.bo.doceditor.upload-file-from-disk,ucf,attr}" />
 						</xul:hbox>
 						<xul:spacer flex="1" />
 						<xul:hbox pack="end" align="center">
 							<xul:button image="{IconsBase}/small/check.png" disabled="true" anonid="ok" oncommand="onOk()"	
-								label="${transui:m.seo.bo.actions.upload,ucf,attr}" />
+								label="${trans:m.seo.bo.actions.upload,ucf,attr}" />
 							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" 
-								label="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+								label="${trans:m.uixul.bo.dialog.cancel,ucf,attr}" />
 						</xul:hbox>
 					</xul:vbox>
 					
@@ -195,7 +195,7 @@
 						<xul:spacer flex="1" />						
 						<xul:hbox pack="end" align="center">
 							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" 
-								label="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+								label="${trans:m.uixul.bo.dialog.cancel,ucf,attr}" />
 						</xul:hbox>
 					</xul:vbox>
 				</xul:vbox>

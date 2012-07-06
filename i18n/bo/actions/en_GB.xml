@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.seo.bo.actions" lcid="en_GB">
-  <key id="compile-rules">Compilation of the rules</key>
-  <key id="compilehtaccess">compile redirects</key>
-  <key id="compilerewriterules">compile</key>
-  <key id="create">create</key>
-  <key id="create_">create</key>
-  <key id="createredirection">create redirect</key>
-  <key id="createrewriterule">create rewriting rule</key>
-  <key id="createsitemap">create sitemap</key>
-  <key id="file">CSV file</key>
-  <key id="file-not-found">Missing file</key>
-  <key id="files">files</key>
-  <key id="generatesitemap">generate</key>
-  <key id="importredirection">import redirects</key>
-  <key id="moverewriterulehere">move rules here</key>
-  <key id="redirection-file-format" format="html"><![CDATA[
+	<key id="compile-rules">Compilation of the rules</key>
+	<key id="compilehtaccess">compile redirects</key>
+	<key id="compilerewriterules">compile</key>
+	<key id="create">create</key>
+	<key id="create_">create</key>
+	<key id="createredirection">create redirect</key>
+	<key id="createrewriterule">create rewriting rule</key>
+	<key id="createsitemap">create sitemap</key>
+	<key id="file">CSV file</key>
+	<key id="file-not-found">Missing file</key>
+	<key id="files">files</key>
+	<key id="generatesitemap">generate</key>
+	<key id="importredirection">import redirects</key>
+	<key id="moverewriterulehere">move rules here</key>
+	<key id="redirection-file-format" format="html"><![CDATA[
  	<p>The file must be in <em>CSV</em> format, with the following properties:</p>
 	<ul>
 		<li>the 1st column contains the old URL and begins with the / character;</li>
@@ -26,9 +26,9 @@
 			<strong>/oldpage.html;http://my.site.com/newpage.html</strong>
 		</li>
 	</ul> 
-  ]]></key>
-  <key id="redirection-import-title">Import a redirect file</key>
-  <key id="redirection-imported">{redirectionCount} redirect(s) were imported</key>
-  <key id="refresh">re-generate</key>
-  <key id="upload">Import</key>
+	]]></key>
+	<key id="redirection-import-title">Import a redirect file</key>
+	<key id="redirection-imported">{redirectionCount} redirect(s) were imported</key>
+	<key id="refresh">re-generate</key>
+	<key id="upload">Import</key>
 </i18n>

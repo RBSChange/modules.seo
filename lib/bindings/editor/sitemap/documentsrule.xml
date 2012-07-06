@@ -7,9 +7,9 @@
 			<xul:vbox flex="1">
 				<xul:cmessageinfo anonid="message" />
 				<xul:hbox anonid="action-bar">
-					<xul:button anonid="save_properties" oncommand="saveProperties()" label="${transui:m.uixul.bo.doceditor.button.save,ucf,attr}"
+					<xul:button anonid="save_properties" oncommand="saveProperties()" label="${trans:m.uixul.bo.doceditor.button.save,ucf,attr}"
 						image="{IconsBase}/small/save.png" />
-					<xul:button anonid="reset_properties" oncommand="resetProperties()" label="${transui:m.uixul.bo.doceditor.button.canceledit,ucf,attr}"
+					<xul:button anonid="reset_properties" oncommand="resetProperties()" label="${trans:m.uixul.bo.doceditor.button.canceledit,ucf,attr}"
 						image="{IconsBase}/small/undo.png" />
 				</xul:hbox>
 				<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
@@ -26,7 +26,7 @@
 			<method name="saveProperties">
 				<body><![CDATA[
 					this.lockCommandsUI();
-					this.showTextMessage("${transui:m.uixul.bo.doceditor.update-in-progress,ucf,js}");
+					this.showTextMessage("${trans:m.uixul.bo.doceditor.update-in-progress,ucf,js}");
 					this.documentEditor.executeServerAction('documentsrule', 'Update');
 				]]></body>
 			</method>
@@ -68,11 +68,11 @@
 				</xul:columns>
 				<xul:rows>
 					<xul:row class="head" anonid="head-row">
-						<xul:label name="status" pack="center" value="${transui:m.seo.bo.doceditor.rulestatus,ucf,attr}" sortonfield="true"/>
-						<xul:label name="model" value="${transui:m.seo.bo.doceditor.model,ucf,attr}" sortonfield="true"/>
-						<xul:label name="doclabel" value="${transui:m.seo.bo.doceditor.doclabel,ucf,attr}" sortonfield="true"/>		
-						<xul:label name="changefreq" value="${transui:m.seo.bo.doceditor.changefreq,ucf,attr}" />
-						<xul:label name="priority" value="${transui:m.seo.bo.doceditor.priority,ucf,attr}" />
+						<xul:label name="status" pack="center" value="${trans:m.seo.bo.doceditor.rulestatus,ucf,attr}" sortonfield="true"/>
+						<xul:label name="model" value="${trans:m.seo.bo.doceditor.model,ucf,attr}" sortonfield="true"/>
+						<xul:label name="doclabel" value="${trans:m.seo.bo.doceditor.doclabel,ucf,attr}" sortonfield="true"/>		
+						<xul:label name="changefreq" value="${trans:m.seo.bo.doceditor.changefreq,ucf,attr}" />
+						<xul:label name="priority" value="${trans:m.seo.bo.doceditor.priority,ucf,attr}" />
 					</xul:row>
 				</xul:rows>
 			</xul:grid>
@@ -119,17 +119,17 @@
 		<xbl:content>
 			<xul:menulist anonid="list" xbl:inherits="disabled" oncommand="document.getBindingParent(this).valueChanged();">
 				  <xul:menupopup>
-				    <xul:menuitem label="0" value="0"/>
-				    <xul:menuitem label="0.1" value="0.1"/>
-				    <xul:menuitem label="0.2" value="0.2"/>
-				    <xul:menuitem label="0.3" value="0.3"/>
-				    <xul:menuitem label="0.4" value="0.4"/>
-				    <xul:menuitem label="0.5" value="0.5"/>
-				    <xul:menuitem label="0.6" value="0.6"/>
-				    <xul:menuitem label="0.7" value="0.7"/>
-				    <xul:menuitem label="0.8" value="0.8"/>
-				    <xul:menuitem label="0.9" value="0.9"/>
-				    <xul:menuitem label="1" value="1"/>
+					<xul:menuitem label="0" value="0"/>
+					<xul:menuitem label="0.1" value="0.1"/>
+					<xul:menuitem label="0.2" value="0.2"/>
+					<xul:menuitem label="0.3" value="0.3"/>
+					<xul:menuitem label="0.4" value="0.4"/>
+					<xul:menuitem label="0.5" value="0.5"/>
+					<xul:menuitem label="0.6" value="0.6"/>
+					<xul:menuitem label="0.7" value="0.7"/>
+					<xul:menuitem label="0.8" value="0.8"/>
+					<xul:menuitem label="0.9" value="0.9"/>
+					<xul:menuitem label="1" value="1"/>
 				  </xul:menupopup>
 			</xul:menulist>
 		</xbl:content>
@@ -173,13 +173,13 @@
 		<xbl:content>
 			<xul:menulist anonid="list" xbl:inherits="disabled" oncommand="document.getBindingParent(this).valueChanged();">
 				  <xul:menupopup>
-				    <xul:menuitem label="${transui:modules.seo.list.always,ucf,attr}" value="always"/>
-				    <xul:menuitem label="${transui:modules.seo.list.hourly,ucf,attr}" value="hourly"/>
-				    <xul:menuitem label="${transui:modules.seo.list.daily,ucf,attr}" value="daily"/>
-				    <xul:menuitem label="${transui:modules.seo.list.weekly,ucf,attr}" value="weekly"/>
-				    <xul:menuitem label="${transui:modules.seo.list.monthly,ucf,attr}" value="monthly"/>
-				    <xul:menuitem label="${transui:modules.seo.list.yearly,ucf,attr}" value="yearly"/>
-				    <xul:menuitem label="${transui:modules.seo.list.never,ucf,attr}" value="never"/>
+					<xul:menuitem label="${trans:modules.seo.list.always,ucf,attr}" value="always"/>
+					<xul:menuitem label="${trans:modules.seo.list.hourly,ucf,attr}" value="hourly"/>
+					<xul:menuitem label="${trans:modules.seo.list.daily,ucf,attr}" value="daily"/>
+					<xul:menuitem label="${trans:modules.seo.list.weekly,ucf,attr}" value="weekly"/>
+					<xul:menuitem label="${trans:modules.seo.list.monthly,ucf,attr}" value="monthly"/>
+					<xul:menuitem label="${trans:modules.seo.list.yearly,ucf,attr}" value="yearly"/>
+					<xul:menuitem label="${trans:modules.seo.list.never,ucf,attr}" value="never"/>
 				  </xul:menupopup>
 			</xul:menulist>		
 		</xbl:content>
@@ -225,8 +225,8 @@
 		<xbl:content>
 			<xul:menulist xbl:inherits="disabled" anonid="list" oncommand="document.getBindingParent(this).valueChanged();">
 				  <xul:menupopup>
-				  	<xul:menuitem label="${transui:m.seo.bo.doceditor.active-rule,ucf,attr}" value="active"/>
-				    <xul:menuitem label="${transui:m.seo.bo.doceditor.exclude-rule,ucf,attr}" value="exclude"/>
+				  	<xul:menuitem label="${trans:m.seo.bo.doceditor.active-rule,ucf,attr}" value="active"/>
+					<xul:menuitem label="${trans:m.seo.bo.doceditor.exclude-rule,ucf,attr}" value="exclude"/>
 				  </xul:menupopup>
 			</xul:menulist>		
 		</xbl:content>
@@ -262,13 +262,13 @@
 	<binding id="cDocumentSitemapOverride">
 		<xbl:content>
 			<xul:hbox xbl:inherits="flex">
-				<xul:checkbox anonid="overridesitemap" label="${transui:m.seo.bo.doceditor.override-sitemap,ucf,attr}" checked="false"/>
-				<xul:checkbox anonid="exclude" label="${transui:m.seo.bo.doceditor.override-exculde,ucf,attr}" checked="false"  disabled="true"/>	
+				<xul:checkbox anonid="overridesitemap" label="${trans:m.seo.bo.doceditor.override-sitemap,ucf,attr}" checked="false"/>
+				<xul:checkbox anonid="exclude" label="${trans:m.seo.bo.doceditor.override-exculde,ucf,attr}" checked="false"  disabled="true"/>	
 				
-				<xul:label value="${transui:m.seo.bo.doceditor.changefreq,ucf,lab,attr}" />	
+				<xul:label value="${trans:m.seo.bo.doceditor.changefreq,ucf,lab,attr}" />	
 				<xul:gridfield anonid="changefreq" class="changefreqselector" disabled="true"/>
 				
-				<xul:label name="priority" value="${transui:m.seo.bo.doceditor.priority,ucf,lab,attr}" />
+				<xul:label name="priority" value="${trans:m.seo.bo.doceditor.priority,ucf,lab,attr}" />
 				<xul:gridfield anonid="priority" class="priorityselector" disabled="true" />
 			</xul:hbox>
 		</xbl:content>

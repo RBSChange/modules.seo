@@ -120,7 +120,7 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param seo_persistentdocument_redirection $document
-	 * @param Integer $parentNodeId
+	 * @param integer $parentNodeId
 	 */
 	protected function postInsert($document, $parentNodeId)
 	{

@@ -3,10 +3,9 @@
 	<binding fileName="modules/seo/persistentdocument/import/seo_binding.xml" />
 	<rootfolder module="seo">
 		<folder byLabel="Règle de ré-ecriture de documents">
-			<moverewriterule />
+			<moverewriterule/>
 		</folder>
 		<folder byLabel="Redirections" />
-		
 		<folder byLabel="Sitemap" />
 	</rootfolder>
 </script>

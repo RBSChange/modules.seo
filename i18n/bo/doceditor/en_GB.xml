@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.seo.bo.doceditor" lcid="en_GB">
-  <key id="active-rule">Activate</key>
-  <key id="changefreq">Modification frequency</key>
-  <key id="doclabel">document</key>
-  <key id="exclude-rule">Excluded</key>
-  <key id="model">model</key>
-  <key id="module">module</key>
-  <key id="override-exculde">Exclude</key>
-  <key id="override-sitemap">Configure sitemap</key>
-  <key id="priority">URL priority</key>
-  <key id="rulestatus">Status</key>
-  <key id="tab-documentsrule">document rewriting</key>
+	<key id="active-rule">Activate</key>
+	<key id="changefreq">Modification frequency</key>
+	<key id="doclabel">document</key>
+	<key id="exclude-rule">Excluded</key>
+	<key id="model">model</key>
+	<key id="module">module</key>
+	<key id="override-exculde">Exclude</key>
+	<key id="override-sitemap">Configure sitemap</key>
+	<key id="priority">URL priority</key>
+	<key id="rulestatus">Status</key>
+	<key id="tab-documentsrule">document rewriting</key>
 </i18n>

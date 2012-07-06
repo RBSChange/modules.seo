@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script>
-  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
-  <actiondef modulename="seo" actionname="insert.folder" label="m.seo.bo.useractionlogger.insert-folder"/>
-  <actiondef modulename="seo" actionname="update.folder" label="m.seo.bo.useractionlogger.update-folder"/>
-  <actiondef modulename="seo" actionname="delete.folder" label="m.seo.bo.useractionlogger.delete-folder"/>
-  <actiondef modulename="seo" actionname="insert.sitemap" label="m.seo.bo.useractionlogger.insert-sitemap"/>
-  <actiondef modulename="seo" actionname="delete.sitemap" label="m.seo.bo.useractionlogger.delete-sitemap"/>
-  <actiondef modulename="seo" actionname="activate.sitemap" label="m.seo.bo.useractionlogger.activate-sitemap"/>
-  <actiondef modulename="seo" actionname="update.sitemap" label="m.seo.bo.useractionlogger.update-sitemap"/>
-  <actiondef modulename="seo" actionname="generatesitemap.sitemap" label="m.seo.bo.useractionlogger.generatesitemap-sitemap"/>
-  <actiondef modulename="seo" actionname="insert.rewriterule" label="m.seo.bo.useractionlogger.insert-rewriterule"/>
-  <actiondef modulename="seo" actionname="updatetranslation.rewriterule" label="m.seo.bo.useractionlogger.updatetranslation-rewriterule"/>
-  <actiondef modulename="seo" actionname="deletelocalization.rewriterule" label="m.seo.bo.useractionlogger.deletelocalization-rewriterule"/>
-  <actiondef modulename="seo" actionname="delete.rewriterule" label="m.seo.bo.useractionlogger.delete-rewriterule"/>
-  <actiondef modulename="seo" actionname="update.rewriterule" label="m.seo.bo.useractionlogger.update-rewriterule"/>
-  <actiondef modulename="seo" actionname="moverewriterulehere.folder" label="m.seo.bo.useractionlogger.moverewriterulehere-folder"/>
-  <actiondef modulename="seo" actionname="insert.redirection" label="m.seo.bo.useractionlogger.insert-redirection"/>
-  <actiondef modulename="seo" actionname="delete.redirection" label="m.seo.bo.useractionlogger.delete-redirection"/>
-  <actiondef modulename="seo" actionname="update.redirection" label="m.seo.bo.useractionlogger.update-redirection"/>
-  <actiondef modulename="seo" actionname="deactivated.redirection" label="m.seo.bo.useractionlogger.deactivated-redirection"/>
-  <actiondef modulename="seo" actionname="reactivate.redirection" label="m.seo.bo.useractionlogger.reactivate-redirection"/>
-  <actiondef modulename="seo" actionname="deactivated.sitemap" label="m.seo.bo.useractionlogger.deactivated-sitemap"/>
+	<binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml" />
+	<actiondef modulename="seo" actionname="insert.folder" label="m.seo.bo.useractionlogger.insert-folder" />
+	<actiondef modulename="seo" actionname="update.folder" label="m.seo.bo.useractionlogger.update-folder" />
+	<actiondef modulename="seo" actionname="delete.folder" label="m.seo.bo.useractionlogger.delete-folder" />
+	<actiondef modulename="seo" actionname="insert.sitemap" label="m.seo.bo.useractionlogger.insert-sitemap" />
+	<actiondef modulename="seo" actionname="delete.sitemap" label="m.seo.bo.useractionlogger.delete-sitemap" />
+	<actiondef modulename="seo" actionname="activate.sitemap" label="m.seo.bo.useractionlogger.activate-sitemap" />
+	<actiondef modulename="seo" actionname="update.sitemap" label="m.seo.bo.useractionlogger.update-sitemap" />
+	<actiondef modulename="seo" actionname="generatesitemap.sitemap" label="m.seo.bo.useractionlogger.generatesitemap-sitemap" />
+	<actiondef modulename="seo" actionname="insert.rewriterule" label="m.seo.bo.useractionlogger.insert-rewriterule" />
+	<actiondef modulename="seo" actionname="updatetranslation.rewriterule" label="m.seo.bo.useractionlogger.updatetranslation-rewriterule" />
+	<actiondef modulename="seo" actionname="deletelocalization.rewriterule" label="m.seo.bo.useractionlogger.deletelocalization-rewriterule" />
+	<actiondef modulename="seo" actionname="delete.rewriterule" label="m.seo.bo.useractionlogger.delete-rewriterule" />
+	<actiondef modulename="seo" actionname="update.rewriterule" label="m.seo.bo.useractionlogger.update-rewriterule" />
+	<actiondef modulename="seo" actionname="moverewriterulehere.folder" label="m.seo.bo.useractionlogger.moverewriterulehere-folder" />
+	<actiondef modulename="seo" actionname="insert.redirection" label="m.seo.bo.useractionlogger.insert-redirection" />
+	<actiondef modulename="seo" actionname="delete.redirection" label="m.seo.bo.useractionlogger.delete-redirection" />
+	<actiondef modulename="seo" actionname="update.redirection" label="m.seo.bo.useractionlogger.update-redirection" />
+	<actiondef modulename="seo" actionname="deactivated.redirection" label="m.seo.bo.useractionlogger.deactivated-redirection" />
+	<actiondef modulename="seo" actionname="reactivate.redirection" label="m.seo.bo.useractionlogger.reactivate-redirection" />
+	<actiondef modulename="seo" actionname="deactivated.sitemap" label="m.seo.bo.useractionlogger.deactivated-sitemap" />
 </script>

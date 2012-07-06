@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.seo.list" lcid="en_GB">
-  <key id="always">Always</key>
-  <key id="daily">Daily</key>
-  <key id="hourly">Hourly</key>
-  <key id="monthly">Monthly</key>
-  <key id="never">Never</key>
-  <key id="newmodelrule-label">Document model without rewriting</key>
-  <key id="redirectionwebsites-label">Website or language available for redirects</key>
-  <key id="sitemapautogeneration-description">Auto-generation of sitemap files</key>
-  <key id="sitemapautogeneration-label">Auto-generation of sitemap files</key>
-  <key id="sitemapchangefreqs-description">List of values for the 'changefreq' option in the Sitemap files</key>
-  <key id="sitemapchangefreqs-label">Sitemap: 'changefreq' values</key>
-  <key id="sitemappriorities-description">List of values for the 'priority' option in the Sitemap files</key>
-  <key id="sitemappriorities-label">Sitemap: 'priority' values</key>
-  <key id="sitemapwebsites-description">site without sitemap</key>
-  <key id="sitemapwebsites-label">site without sitemap</key>
-  <key id="weekly">Weekly</key>
-  <key id="yearly">Yearly</key>
+	<key id="always">Always</key>
+	<key id="daily">Daily</key>
+	<key id="hourly">Hourly</key>
+	<key id="monthly">Monthly</key>
+	<key id="never">Never</key>
+	<key id="newmodelrule-label">Document model without rewriting</key>
+	<key id="redirectionwebsites-label">Website or language available for redirects</key>
+	<key id="sitemapautogeneration-description">Auto-generation of sitemap files</key>
+	<key id="sitemapautogeneration-label">Auto-generation of sitemap files</key>
+	<key id="sitemapchangefreqs-description">List of values for the 'changefreq' option in the Sitemap files</key>
+	<key id="sitemapchangefreqs-label">Sitemap: 'changefreq' values</key>
+	<key id="sitemappriorities-description">List of values for the 'priority' option in the Sitemap files</key>
+	<key id="sitemappriorities-label">Sitemap: 'priority' values</key>
+	<key id="sitemapwebsites-description">site without sitemap</key>
+	<key id="sitemapwebsites-label">site without sitemap</key>
+	<key id="weekly">Weekly</key>
+	<key id="yearly">Yearly</key>
 </i18n>
