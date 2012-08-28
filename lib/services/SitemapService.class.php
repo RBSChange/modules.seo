@@ -446,7 +446,15 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		return array_diff($langs, $definedLangs);	
 	}
 	
-
+	/**
+	 * @param seo_persistentdocument_sitemap $document (Read only)
+	 * @param array $defaultSynchroConfig string : string[]
+	 * @return array string : string[]
+	 */
+	public function getI18nSynchroConfig($document, $defaultSynchroConfig)
+	{
+		return array();
+	}
 	
 	/**
 	 * @param seo_persistentdocument_sitemap $document
@@ -480,13 +488,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$langs = $this->getAvailableLangs($website);
 		if (count($langs))
 		{
-			foreach ($langs as $lang) 
-			{
-				$sitemap = $this->getNewDocumentInstance();
-				$sitemap->setWebsite($website);
-				$sitemap->setWebsiteLang($lang);
-				$this->save($sitemap, $parentNodeId);
-			}
+			$lang = $lang[0];
+			$sitemap = $this->getNewDocumentInstance();
+			$sitemap->setWebsite($website);
+			$sitemap->setWebsiteLang($lang);
+			$this->save($sitemap, $parentNodeId);
 		}
 	}
 
