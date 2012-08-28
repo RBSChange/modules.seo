@@ -469,13 +469,11 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$langs = $this->getAvailableLangs($website);
 		if (count($langs))
 		{
-			foreach ($langs as $lang) 
-			{
-				$sitemap = $this->getNewDocumentInstance();
-				$sitemap->setWebsite($website);
-				$sitemap->setWebsiteLang($lang);
-				$this->save($sitemap, $parentNodeId);
-			}
+			$lang = $lang[0];
+			$sitemap = $this->getNewDocumentInstance();
+			$sitemap->setWebsite($website);
+			$sitemap->setWebsiteLang($lang);
+			$this->save($sitemap, $parentNodeId);
 		}
 	}
 
