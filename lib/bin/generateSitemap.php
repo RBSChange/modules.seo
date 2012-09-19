@@ -1,4 +1,6 @@
 <?php
+/* @var $arguments array */
+$arguments = isset($arguments) ? $arguments : array();
 list($sitemapId, $tmpFile, $modelName, $offset, $chunkSize) = $arguments;
 
 $sitemap = seo_persistentdocument_sitemap::getInstanceById($sitemapId);
