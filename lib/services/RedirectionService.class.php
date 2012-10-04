@@ -106,16 +106,16 @@ class seo_RedirectionService extends f_persistentdocument_DocumentService
 				
 				// For pages with variables, we need:
 				// * a specific condition to check the query string.
-				// * a '?' in trhe rewrite rule after the new URL to remove the query string.
+				// * a '?' in the rewrite rule after the new URL to remove the query string.
 				if (strpos($oldUrl, '?') !== false)
 				{
 					list($oldUrl, $queryString) = explode('?', $oldUrl);
 					$data[] = 'RewriteCond %{QUERY_STRING} ^'.preg_quote($queryString).'$';
-					$data[] = 'RewriteRule ^' . preg_quote($oldUrl) . '$ ' . $newUrl . ' [L,R=301]';
+					$data[] = 'RewriteRule ^' . preg_quote($oldUrl) . '$ ' . $newUrl . ' [L,NE,R=301]';
 				}
 				else 
 				{
-					$data[] = 'RewriteRule ^' . preg_quote($oldUrl) . '$ ' . $newUrl . ' [L,R=301]';
+					$data[] = 'RewriteRule ^' . preg_quote($oldUrl) . '$ ' . $newUrl . ' [L,NE,R=301]';
 				}
 			}
 		}
