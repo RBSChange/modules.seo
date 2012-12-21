@@ -4,10 +4,10 @@
 		<property name="website" type="Document" document-type="modules_website/website" />
 		<property name="websiteLang" type="String" db-size="2" />
 		<property name="oldUrl" type="String" default-value="/" required="true">
-			<constraint name="matches" parameter="^/[^\s]{1,254}$" />
+			<constraint name="regexp" parameter="/^\/[^\s]{1,254}$/" />
 		</property>
 		<property name="newUrl" type="String" default-value="http://" required="true">
-			<constraint name="matches" parameter="^http\://[^\s]{1,243}$" />
+			<constraint name="regexp" parameter="/^http\:\/\/[^\s]{1,243}$/" />
 		</property>
 	</properties>
 	<statuses default="ACTIVE" />
