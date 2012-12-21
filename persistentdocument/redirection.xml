@@ -7,10 +7,10 @@
 		<add name="website" type="modules_website/website" />
 		<add name="websiteLang" type="String" db-size="2"/>
 		<add name="oldUrl" type="String" min-occurs="1" default-value="/">
-			<constraints>matches:^/[^\s]{1,254}$</constraints>
+			<constraints>regexp:/^\/[^\s]{1,254}$/</constraints>
 		</add>
 		<add name="newUrl" type="String" min-occurs="1" default-value="http://">
-			<constraints>matches:^http\://[^\s]{1,243}$</constraints>
+			<constraints>regexp:/^http\:\/\/[^\s]{1,243}$/</constraints>
 		</add>	
 	</properties>
 	<statuses default="ACTIVE" />
