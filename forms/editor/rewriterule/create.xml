@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
-  <section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
-    <field name="modelName" required="true" listid="modules_seo/newmodelrule" type="dropdownlist" nocache="true"/>
-    <field name="template" size="100"/>
-  </section>
+	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+		<field name="modelName" required="true" listid="modules_seo/newmodelrule" type="dropdownlist" nocache="true" />
+		<field name="template" class="template" size="100" />
+	</section>
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				var me = this;
+				this.fields.modelName.addEventListener('fieldChanged', function () { me.updateTemplateVars(); }, true);
+			]]></constructor>
+			
+			<method name="updateTemplateVars">
+				<parameter name="result" />
+				<body><![CDATA[
+					try
+					{
+						var params = { modelName: this.fields.modelName.value };
+						var result = wCore.executeJSON('seo', 'GetRewriteruleTemplateVarsByModelName', params, null, true);
+						if (result.status != 'OK')
+						{
+							this.showErrorMessage(result.contents.errorMessage);
+							return;
+						}
+						else
+						{
+							var templatevars = result.contents.templatevars;
+							var templateField = this.fields.template;
+							templateField.clearSubstitutions();
+							for (var i = 0; i < templatevars.length; i++)
+							{
+								templateField.addSubstitution(templatevars[i].label, templatevars[i].value);
+							}
+						}
+					}
+					catch (e)
+					{
+						wCore.error("updateTemplateVars", [result], e);
+					}
+				]]></body>
+			</method>
+		</javascript>
+	</xul>
 </panel>
