@@ -26,7 +26,7 @@ class seo_ListSitemapwebsitesService extends BaseService implements list_ListIte
 	 * @see list_persistentdocument_dynamiclist::getItems()
 	 * @return list_Item[]
 	 */
-	public final function getItems()
+	public function getItems()
 	{
 		$items = array();
 		$websites = seo_SitemapService::getInstance()->getWebsiteAvailable();
@@ -50,5 +50,4 @@ class seo_ListSitemapwebsitesService extends BaseService implements list_ListIte
 	{
 		$this->parameters = $parameters;
 	}
-	
 }

@@ -26,7 +26,7 @@ class seo_ListNewmodelruleService extends BaseService implements list_ListItemsS
 	 * @see list_persistentdocument_dynamiclist::getItems()
 	 * @return list_Item[]
 	 */
-	public final function getItems()
+	public function getItems()
 	{
 		$wrrs = website_RewriteruleService::getInstance();
 		$items = array();
