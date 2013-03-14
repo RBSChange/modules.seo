@@ -237,7 +237,6 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 		$wsurs = website_UrlRewritingService::getInstance();
 		try 
 		{
-			$this->tm->beginTransaction();
 			$website = $sitemap->getWebsite();
 			$websiteId = $website->getId();
 			$lang = $sitemap->getWebsiteLang();
@@ -323,11 +322,10 @@ class seo_SitemapService extends f_persistentdocument_DocumentService
 				}
 
 			}
-			$this->tm->commit();
 		}
 		catch (Exception $e)
 		{
-			$this->tm->rollBack($e);
+			Framework::exception($e);
 		}
 		
 		fclose($filerc);
