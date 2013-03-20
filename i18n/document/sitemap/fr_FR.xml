@@ -6,7 +6,7 @@
   <key id="website-help">Site web</key>
   <key id="websitelang">Langue du site</key>
   <key id="priority">valeur par défaut de 'priority'</key>
-  <key id="changefreq">valeurs par défaut de 'changefreq'</key>
+  <key id="changefreq">valeur par défaut de 'changefreq'</key>
   <key id="generationfreq">Auto-génération</key>
   <key id="generationfreq-help">Auto-génération des fichiers Sitemap</key>
   <key id="baseurl">URL de base</key>

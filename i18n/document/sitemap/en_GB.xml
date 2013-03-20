@@ -2,7 +2,7 @@
 <i18n baseKey="m.seo.document.sitemap" lcid="en_GB">
   <include id="m.generic.document.document"/>
   <key id="baseurl">Base URL</key>
-  <key id="changefreq">default values for 'changefreq'</key>
+  <key id="changefreq">default value for 'changefreq'</key>
   <key id="document-name">Sitemap</key>
   <key id="generationfreq">Auto-generation</key>
   <key id="generationfreq-help">Auto-generation of sitemap files</key>

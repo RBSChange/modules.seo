@@ -195,7 +195,7 @@
 						<xul:spacer flex="1" />						
 						<xul:hbox pack="end" align="center">
 							<xul:button image="{IconsBase}/small/delete.png" oncommand="onCancel()" 
-								label="${transui:m.uixul.bo.dialog.cancel,ucf,attr}" />
+								label="${transui:m.uixul.bo.dialog.close,ucf,attr}" />
 						</xul:hbox>
 					</xul:vbox>
 				</xul:vbox>
