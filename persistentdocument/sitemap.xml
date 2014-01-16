@@ -13,5 +13,6 @@
 		<add name="sitemapExcludedModels" type="LongString" />
 		<add name="sitemapExcludedIds" type="LongString" />
 		<add name="sitemapUrlInfo" type="LongString" />
+		<add name="includeinrobotstxt" type="Boolean" default-value="true" />		
 	</properties>
 </document>

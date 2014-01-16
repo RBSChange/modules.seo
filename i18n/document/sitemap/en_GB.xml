@@ -11,4 +11,6 @@
   <key id="website">Website</key>
   <key id="website-help">Website</key>
   <key id="websitelang">Site language</key>
+  <key id="includeinrobotstxt">append to robots.txt file</key> 
+  <key id="includeinrobotstxt-help">When this field's value is "no", the sitemap's url is no longer included in the generated robots.txt file</key>    
 </i18n>

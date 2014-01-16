@@ -80,7 +80,8 @@ class seo_ModuleService extends ModuleBaseService
 			
 		foreach ($sitemaps as $sitemap) 
 		{
-			if ($sitemap instanceof seo_persistentdocument_sitemap) 
+			if ($sitemap instanceof seo_persistentdocument_sitemap 
+				&& $sitemap->getIncludeinrobotstxt() === true) 
 			{
 				$indexURL = $sitemap->getDocumentService()->getIndexURL($sitemap);
 				if ($indexURL)
