@@ -11,4 +11,6 @@
   <key id="generationfreq-help">Auto-génération des fichiers Sitemap</key>
   <key id="baseurl">URL de base</key>
   <key id="indexurl">URL de l'index du site map</key>
+  <key id="includeinrobotstxt">ajouter au fichier robots.txt</key>
+  <key id="includeinrobotstxt-help">Lorsque ce champ vaut "non", l'url de ce sitemap n'est plus ajoutée au fichier robots.txt généré</key>  
 </i18n>
